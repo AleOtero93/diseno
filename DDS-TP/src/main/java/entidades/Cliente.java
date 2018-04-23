@@ -60,5 +60,20 @@ public class Cliente extends Usuario {
 	public void setTipoDocumento(TipoDocumento tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
-
+	
+	public int cantidadDispositivos(){
+		return dispositivos.size();
+	}
+	
+	public int cantidadDispositivosEnEstado(Boolean estado) {
+		int cont = 0;
+		for(Dispositivo disp : dispositivos) {
+			if(disp.getEncendido() == estado) {
+				cont++;				
+			}
+		}
+		return cont;
+	}
+	
+	
 }
