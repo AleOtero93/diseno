@@ -5,6 +5,7 @@ public class Dispositivo {
 	private String nombre;
 	private Float kwhora;
 	private Boolean encendido;
+	
 	public String getNombre() {
 		return nombre;
 	}
