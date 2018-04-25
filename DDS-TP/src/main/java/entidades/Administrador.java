@@ -1,6 +1,8 @@
 package entidades;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 public class Administrador extends Usuario {
 	
@@ -47,5 +49,14 @@ public class Administrador extends Usuario {
 		Id = id;
 	}
 
-	
+	//No tiene en cuenta los dias
+	public int mesesEnSistema() {
+		Calendar inicio = new GregorianCalendar();
+        Calendar fin = new GregorianCalendar();
+        inicio.setTime(fechaAltaSistema);
+        fin.setTime(new Date());
+        int difA = fin.get(Calendar.YEAR) - inicio.get(Calendar.YEAR);
+        int difM = difA * 12 + fin.get(Calendar.MONTH) - inicio.get(Calendar.MONTH);
+        return difM;
+	}
 }

@@ -1,6 +1,8 @@
 package entidades;
 
 import java.util.List;
+import java.util.ArrayList;
+
 
 public class Cliente extends Usuario {
 
@@ -13,18 +15,17 @@ public class Cliente extends Usuario {
 			String usuario, 
 			String password, 
 			TipoDocumento tipoDocumento,
-			Categoria categoria,
-			List<Dispositivo> dispositivos) {
+			Categoria categoria) {
 		super(nombre, apellido, usuario, password);
 		// TODO Auto-generated constructor stub
 
 		this.categoria = categoria;
 		this.tipoDocumento = tipoDocumento;
-		this.dispositivos = dispositivos;
+		this.dispositivos = new ArrayList<Dispositivo>();
 		
 	}
 
-	public boolean dispositivoEncendido(Dispositivo dispositivo) {
+	public boolean dispEncendido(Dispositivo dispositivo) {
 		String nombre = dispositivo.getNombre();
 
 		for(Dispositivo disp : dispositivos) {
@@ -61,11 +62,24 @@ public class Cliente extends Usuario {
 		this.tipoDocumento = tipoDocumento;
 	}
 	
-	public int cantidadDispositivos(){
+	public void agregarDisp(Dispositivo disp){
+		dispositivos.add(disp);
+	}
+	
+	public void eliminarDisp(String nomDisp){
+		for(int i=0;i<dispositivos.size();i++) {
+			if(dispositivos.get(i).getNombre().equalsIgnoreCase(nomDisp)) {
+				dispositivos.remove(i);
+				break;
+			}
+		}
+	}
+	
+	public int cantDisp(){
 		return dispositivos.size();
 	}
 	
-	public int cantidadDispositivosEnEstado(Boolean estado) {
+	public int cantDispEnEstado(Boolean estado) {
 		int cont = 0;
 		for(Dispositivo disp : dispositivos) {
 			if(disp.getEncendido() == estado) {

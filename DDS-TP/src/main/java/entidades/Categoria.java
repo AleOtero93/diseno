@@ -8,6 +8,14 @@ public class Categoria {
 	private Float cargoFijo;
 	private Float cargoVariable;
 	
+	public Categoria(String nom, int min, int max, Float cFij, Float cVar) {
+		this.nombre = nom;
+		this.consumoMensualMinimo = min;
+		this.consumoMensualMaximo = max;
+		this.cargoFijo = cFij;
+		this.cargoVariable = cVar;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
