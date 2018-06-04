@@ -6,11 +6,6 @@ public class Dispositivo {
 	private Float kwhora;
 	private Boolean encendido;
 	
-	public Dispositivo(String nom, Float kwh, Boolean enc){
-		this.nombre = nom;
-		this.kwhora = kwh;
-		this.encendido = enc;
-	}
 	public String getNombre() {
 		return nombre;
 	}
