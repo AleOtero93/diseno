@@ -11,7 +11,6 @@ public class Dispositivo {
 		this.kwhora = kwh;
 		this.encendido = enc;
 	}
-	
 	public String getNombre() {
 		return nombre;
 	}

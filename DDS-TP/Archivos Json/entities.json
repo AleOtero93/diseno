@@ -1,0 +1,25 @@
+[
+	{
+		"nombre":"Alejandro",
+		"apellido":"Otero"
+	    "usuario":"aotero",
+	    "password":"admin123",
+	    "dispositivos": [{
+			"nombre":"Heladera",
+		    "kwhora":80.0,
+		    "encendido": false
+		},
+
+		{
+			"nombre":"Lavarropas",
+		    "kwhora":100.0,
+		    "encendido": true
+		},
+
+		{
+			"nombre":"Secarropas",
+		    "kwhora":130.0,
+		    "encendido": true
+		}]
+	},
+]

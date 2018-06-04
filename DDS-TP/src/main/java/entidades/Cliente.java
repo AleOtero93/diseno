@@ -9,6 +9,13 @@ public class Cliente extends Usuario {
 	private Categoria categoria;
 	private TipoDocumento tipoDocumento;
 	private List<Dispositivo> dispositivos;
+	
+	public Cliente(String nombre, 
+			String apellido, 
+			String usuario, 
+			String password){
+		super(nombre, apellido, usuario, password);
+	}
 
 	public Cliente(String nombre, 
 			String apellido, 
