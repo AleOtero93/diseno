@@ -27,7 +27,7 @@ public class ClienteTest {
 						"TestPas", 
 						TipoDocumento.DNI,
 						new Categoria("TestCat",1,2,1f,2f));
-		disp = new Dispositivo("TestDisp", 1f, true);
+		disp = new Dispositivo("TestDisp",1234,1);
 		cli.agregarDisp(disp);
 	}	
 		
@@ -49,7 +49,7 @@ public class ClienteTest {
 	
 	@Test
 	public void cantDispEnEstado_Test() {
-		Assert.assertEquals(1,cli.cantDispEnEstado(true));
+		Assert.assertEquals(0,cli.cantDispEnEstado(1));
 	}	
 	
 }

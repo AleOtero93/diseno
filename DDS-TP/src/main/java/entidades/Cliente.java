@@ -9,12 +9,14 @@ public class Cliente extends Usuario {
 	private Categoria categoria;
 	private TipoDocumento tipoDocumento;
 	private List<Dispositivo> dispositivos;
+	private Integer puntos;
 	
 	public Cliente(String nombre, 
 			String apellido, 
 			String usuario, 
 			String password){
 		super(nombre, apellido, usuario, password);
+		this.puntos = 0;
 	}
 
 	public Cliente(String nombre, 
@@ -29,19 +31,20 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 		this.tipoDocumento = tipoDocumento;
 		this.dispositivos = new ArrayList<Dispositivo>();
-		
+		this.puntos = 0;
 	}
 
 	public boolean dispEncendido(Dispositivo dispositivo) {
-		String nombre = dispositivo.getNombre();
-
-		for(Dispositivo disp : dispositivos) {
-			if(disp.getNombre().equals(nombre)) {
-				return dispositivo.getEncendido();
-				
+		if(dispositivo.getTipo() == 1){//Si es Inteligente
+			String nombre = dispositivo.getNombre();
+	
+			for(Dispositivo disp : dispositivos) {
+				if(disp.getNombre().equals(nombre)) {
+					return ((DispositivoInteligente)dispositivo).encendido();
+					
+				}
 			}
 		}
-
 		return false;
 	}
 	
@@ -86,14 +89,25 @@ public class Cliente extends Usuario {
 		return dispositivos.size();
 	}
 	
-	public int cantDispEnEstado(Boolean estado) {
+	public int cantDispEnEstado(Integer estado) {
 		int cont = 0;
 		for(Dispositivo disp : dispositivos) {
-			if(disp.getEncendido() == estado) {
+			if(disp.getTipo() == 1 && ((DispositivoInteligente)disp).getEstado() == estado) {
 				cont++;				
 			}
 		}
 		return cont;
+	}
+	
+	public void convertirDisp(Dispositivo disp) {
+		this.puntos += 10;
+		((DispositivoEstandar)disp).ConvertirInteligente();
+		disp = null;
+	}
+	
+	public void registrarDisp(Dispositivo disp) {
+		this.agregarDisp(disp);
+		this.puntos += 15;
 	}
 	
 	
