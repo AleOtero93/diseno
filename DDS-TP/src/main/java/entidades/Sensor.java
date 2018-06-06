@@ -1,5 +1,6 @@
 package entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sensor {
@@ -8,6 +9,7 @@ public class Sensor {
 	
 	public Sensor(Integer estado){
 		this.estado = estado;
+		this.actuadores = new ArrayList<Actuador>();
 	}
 	
 	public void agregarAct(Actuador act){

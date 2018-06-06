@@ -1,5 +1,6 @@
 package entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.script.ScriptEngine;
@@ -16,6 +17,8 @@ public class Actuador {
 		this.regla = regla;
 		this.operacion = operacion;
 		this.operacionEnDispositivo = operacionEnDispositivo;
+		this.dispositivos = new ArrayList<DispositivoInteligente>();
+		
 	}
 	
 	public void agregarDisp(DispositivoInteligente disp){
@@ -64,7 +67,7 @@ public class Actuador {
 	}
 	
 	public void actualizar(Integer estado){
-		String op = "if(" + regla + " == " + estado + ")";
+		String op = "(" + estado + " " + operacion + " " + regla + ")";
 		ScriptEngineManager manager = new ScriptEngineManager();
 		ScriptEngine engine = manager.getEngineByName("js");
 		boolean result;
