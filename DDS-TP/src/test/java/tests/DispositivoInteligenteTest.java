@@ -33,6 +33,14 @@ public class DispositivoInteligenteTest {
 	}	
 		
 	@Test
+    public void testCambioEstadoAhorroDeEnergia(){
+		  heladera.ahorroEnergia();
+		  		Assert.assertEquals(true, heladera.getEstado()==2);
+		  heladera.encender();
+		  		Assert.assertEquals(true,heladera.encendido());
+	}	
+	
+	@Test
     public void testCambiarEstado(){
 		        heladera.apagar();
 				Assert.assertEquals(true, heladera.apagado());
