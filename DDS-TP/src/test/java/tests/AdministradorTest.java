@@ -1,5 +1,7 @@
 package tests;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.Assert;
@@ -10,21 +12,28 @@ import entidades.Administrador;
 
 public class AdministradorTest {
 	
-	Administrador admin;
+	private Administrador admin;
+	private Administrador admin2;
+	
+	DateFormat formatoFecha = new SimpleDateFormat("EEEE/MMMM/yyyy");
 	
 	@Before
-	public void BeforeMethod() {
-		 admin = new Administrador("TestNom", 
-				"TestApe", 
-				"TestUsu", 
-				"TestPas",
-				"TestDom",
-				new Date(),
-				111111);
+	public void initialize() {
+		 admin = new Administrador("Julian","Crespo","admin1","12345","Corrientes 1000",
+				     new Date(),111111);
+		 
+	 admin2 = new Administrador("Eduardo", "Lopez","admin2","12345","Boedo",
+		new Date(),001222);
+		 
 	}
 	
 	@Test
 	public void mesesEnSistema_Test() {
 		Assert.assertEquals(0,admin.mesesEnSistema());
 	}
+	
+	@Test
+	public void mesesEnSistema2_Test() {
+		Assert.assertEquals(582,admin2.mesesEnSistema());
+	} 
 }
