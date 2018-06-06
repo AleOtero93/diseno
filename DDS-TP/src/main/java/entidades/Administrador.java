@@ -1,13 +1,12 @@
 package entidades;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Calendar;
+import org.joda.time.DateTime;
+import org.joda.time.Months;
 
 public class Administrador extends Usuario {
 	
 	private String domicilio;
-	private Date fechaAltaSistema;
+	private DateTime fechaAltaSistema;
 	private Integer Id;
 
 	public Administrador(String nombre, 
@@ -15,7 +14,7 @@ public class Administrador extends Usuario {
 			String usuario, 
 			String password,
 			String domicilio,
-			Date fechaAltaSistema,
+			DateTime fechaAltaSistema,
 			Integer Id) {
 		super(nombre, apellido, usuario, password);
 		// TODO Auto-generated constructor stub
@@ -33,11 +32,11 @@ public class Administrador extends Usuario {
 		this.domicilio = domicilio;
 	}
 
-	public Date getFechaAltaSistema() {
+	public DateTime getFechaAltaSistema() {
 		return fechaAltaSistema;
 	}
 
-	public void setFechaAltaSistema(Date fechaAltaSistema) {
+	public void setFechaAltaSistema(DateTime fechaAltaSistema) {
 		this.fechaAltaSistema = fechaAltaSistema;
 	}
 
@@ -48,15 +47,9 @@ public class Administrador extends Usuario {
 	public void setId(Integer id) {
 		Id = id;
 	}
+	
+	public long mesesEnSistema(){
+    	return Months.monthsBetween(this.fechaAltaSistema, DateTime.now() ).getMonths();
+    }
 
-	//No tiene en cuenta los dias
-	public int mesesEnSistema() {
-		Calendar inicio = new GregorianCalendar();
-        Calendar fin = new GregorianCalendar();
-        inicio.setTime(fechaAltaSistema);
-        fin.setTime(new Date());
-        int difA = fin.get(Calendar.YEAR) - inicio.get(Calendar.YEAR);
-        int difM = difA * 12 + fin.get(Calendar.MONTH) - inicio.get(Calendar.MONTH);
-        return difM;
-	}
 }
