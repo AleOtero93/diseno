@@ -1,9 +1,11 @@
 [
 	{
 		"nombre":"Alejandro",
-		"apellido":"Otero"
+		"apellido":"Otero",
 	    "usuario":"aotero",
 	    "password":"admin123",
+	    "nroDocumento": 12345,
+        "tipoDocumento": "DNI",
 	    "dispositivos": [{
 			"nombre":"Heladera",
 		    "kwhora":80.0,
@@ -21,5 +23,5 @@
 		    "kwhora":130.0,
 		    "encendido": true
 		}]
-	},
+	}
 ]

@@ -10,26 +10,21 @@ public class Cliente extends Usuario {
 	private TipoDocumento tipoDocumento;
 	private List<Dispositivo> dispositivos;
 	private Integer puntos;
+	private Integer nroDocumento;
 	
-	public Cliente(String nombre, 
-			String apellido, 
-			String usuario, 
-			String password){
-		super(nombre, apellido, usuario, password);
-		this.puntos = 0;
-	}
-
 	public Cliente(String nombre, 
 			String apellido, 
 			String usuario, 
 			String password, 
 			TipoDocumento tipoDocumento,
+			Integer nroDocumento,
 			Categoria categoria) {
 		super(nombre, apellido, usuario, password);
 		// TODO Auto-generated constructor stub
 
 		this.categoria = categoria;
 		this.tipoDocumento = tipoDocumento;
+		this.nroDocumento = nroDocumento;
 		this.dispositivos = new ArrayList<Dispositivo>();
 		this.puntos = 0;
 	}
@@ -108,6 +103,14 @@ public class Cliente extends Usuario {
 	public void registrarDisp(Dispositivo disp) {
 		this.agregarDisp(disp);
 		this.puntos += 15;
+	}
+
+	public Integer getNroDocumento() {
+		return nroDocumento;
+	}
+
+	public void setNroDocumento(Integer nroDocumento) {
+		this.nroDocumento = nroDocumento;
 	}
 	
 	
