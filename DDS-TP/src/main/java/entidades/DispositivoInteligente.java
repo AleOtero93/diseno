@@ -1,66 +1,72 @@
 package entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import org.joda.time.DateTime;
+
+import estadosDispositivos.EstadoDispositivo;
 
 public class DispositivoInteligente extends Dispositivo{
-	private Integer estado;
-	private Float consumo;
-	private Float kwHoraAhorro;
+
+	private Double consumoPorHora;
+	private Double consumoPorHoraEnAhorro;
+	private List<EstadoDispositivo> estados = new ArrayList<>();
 	
-	public DispositivoInteligente(String nom, Integer idFab) {
-		super(nom,idFab,1);
-		this.encender();
-	}
-	public DispositivoInteligente(Dispositivo disp) {
-		super(disp.getNombre(),disp.getIdFabrica(),1);
-		this.encender();
-	}
-	public DispositivoInteligente(DispositivoEstandar disp) {
-		super(disp.getNombre(),disp.getIdFabrica(),1);
-		this.encender();
+	public DispositivoInteligente(String nombre, Integer idFab, EstadoDispositivo estado, Double consumoPorHora, Double consumoEnAhorro) {
+		super(nombre, idFab);
+		this.setConsumoPorHora(consumoPorHora);
+		this.setConsumoPorHoraEnAhorro(consumoEnAhorro);
+		this.estados.add(estado);
 	}
 	
-	public Integer getEstado() {
-		return estado;
+	public boolean estaEncendido(){
+		return this.ultimoEstado().estaEncendido();
 	}
-	public void setEstado(Integer estado) {
-		this.estado = estado;
+	
+	public void apagarDispositivo(){
+		this.ultimoEstado().apagarDispositivo(this);
 	}
-	public float getconsumo() {
-		return consumo;
+	
+	public void encenderDispositivo(){
+		this.ultimoEstado().encenderDispositivo(this);
 	}
-	public void setconsumo(Float consumo) {
-		this.consumo = consumo;
+	
+	public void ponerEnModoAhorro(){
+		this.ultimoEstado().ponerEnModoAhorro(this);
 	}
-	public float getkwHoraAhorro() {
-		return kwHoraAhorro;
+	
+	public void addEstado(EstadoDispositivo estadoDispositivo) {
+        this.estados.add(estadoDispositivo);
+    }
+	
+	private EstadoDispositivo ultimoEstado(){
+        return this.estados.get(estados.size()-1);
+    }
+	
+	public Double getConsumoPorHora() {
+		return consumoPorHora;
 	}
-	public void setkwHoraAhorro(Float kwHoraAhorro) {
-		this.kwHoraAhorro = kwHoraAhorro;
+
+	public void setConsumoPorHora(Double consumoPorHora) {
+		this.consumoPorHora = consumoPorHora;
+	}
+
+	public Double getConsumoPorHoraEnAhorro() {
+		return consumoPorHoraEnAhorro;
+	}
+
+	public void setConsumoPorHoraEnAhorro(Double consumoPorHoraEnAhorro) {
+		this.consumoPorHoraEnAhorro = consumoPorHoraEnAhorro;
 	}	
-	public void apagar() {
-		this.estado = 0;
+	
+//Calcular el consumo del periodo del dispositivo Inteligente
+	@Override
+	public Double consumoPeriodo(DateTime fechaDesde, DateTime fechaHasta) {
+		
+		return null;
 	}
-	public void encender() {
-		this.estado = 1;
-	}
-	public void ahorroEnergia() {
-		this.estado = 2;
-	}
-	public boolean encendido(){
-		return (this.estado == 1);
-	}
-	public boolean apagado(){
-		return (this.estado == 0);
-	}
-	public float energiaConsumida(Integer horas){
-		//Necesitamos Persistencia, por ahora devolvemos dummy
-		float calcEnergia = 0;
-		return calcEnergia;
-	}
-	public float consumoPeriodo(Date fechaInicio, Date fechaFin){
-		//Necesitamos Persistencia, por ahora devolvemos dummy
-		float calcConsumo = 0;
-		return calcConsumo;
-	}
+
+
 }

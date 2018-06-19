@@ -2,49 +2,65 @@ package tests;
 import org.junit.Before;
 import org.junit.Test;
 
+import accionesDispositivo.AccionesSobreDispositivos;
+import accionesDispositivo.ApagarDispositivo;
+import accionesDispositivo.EncenderDispositivo;
+import entidades.Categoria;
+import entidades.Cliente;
 import entidades.Dispositivo;
 import entidades.DispositivoInteligente;
+import entidades.TipoDocumento;
+import estadosDispositivos.*;
 import org.junit.Assert;
 
 public class DispositivoInteligenteTest {
 	
-	private DispositivoInteligente heladera;
-	private DispositivoInteligente telefono;
+	DispositivoInteligente heladera;
+	Cliente cliente;
+	AccionesSobreDispositivos apagar;
+	AccionesSobreDispositivos encender;
 			
 	@Before
     public void initialize() {
-		 
-		 heladera = new DispositivoInteligente(new Dispositivo("heladera",20,1));
-		 telefono = new DispositivoInteligente(new Dispositivo("telefono",21,1));
-	 	 
+		cliente = new Cliente("Alejandro", "Otero", "aotero", "admin123", TipoDocumento.DNI,12345,new Categoria("TestCat",1,2,1f,2f));
+		heladera = new DispositivoInteligente("heladera", 1234, new Apagado(), 15.0, 10.0);
+		apagar = new ApagarDispositivo();
+		encender = new EncenderDispositivo();
 	}
 		
 	@Test
     public void testEstadoEncendido(){
-				Assert.assertEquals(true, heladera.encendido());
-				Assert.assertEquals(true, telefono.encendido());
+		Assert.assertEquals(false, heladera.estaEncendido());
+	
 	}	
 	
 	@Test
-    public void testEstadoAhorroDeEnergia(){
-		  heladera.ahorroEnergia();
-		  		Assert.assertEquals(true, heladera.getEstado()==2);
-		  		Assert.assertEquals(false, telefono.getEstado()==2);
-	}	
-		
-	@Test
-    public void testCambioEstadoAhorroDeEnergia(){
-		  heladera.ahorroEnergia();
-		  		Assert.assertEquals(true, heladera.getEstado()==2);
-		  heladera.encender();
-		  		Assert.assertEquals(true,heladera.encendido());
-	}	
+	public void testEjecutarAccion(){
+		Assert.assertFalse(heladera.estaEncendido());
+		cliente.ejecutarAccionSobreDispositivo(encender, heladera);
+		Assert.assertTrue(heladera.estaEncendido());
+	}
 	
-	@Test
-    public void testCambiarEstado(){
-		        heladera.apagar();
-				Assert.assertEquals(true, heladera.apagado());
-				Assert.assertEquals(false, telefono.apagado());
-				
-	}	
+//	@Test
+//    public void testEstadoAhorroDeEnergia(){
+//		  heladera.ahorroEnergia();
+//		  		Assert.assertEquals(true, heladera.getEstado()==2);
+//		  		Assert.assertEquals(false, telefono.getEstado()==2);
+//	}	
+//		
+//	@Test
+//    public void testCambioEstadoAhorroDeEnergia(){
+//		  heladera.ahorroEnergia();
+//		  		Assert.assertEquals(true, heladera.getEstado()==2);
+//		  heladera.encender();
+//		  		Assert.assertEquals(true,heladera.encendido());
+//	}	
+//	
+//	@Test
+//    public void testCambiarEstado(){
+//		        heladera.apagar();
+//				Assert.assertEquals(true, heladera.apagado());
+//				Assert.assertEquals(false, telefono.apagado());
+//				
+//	}	
 }

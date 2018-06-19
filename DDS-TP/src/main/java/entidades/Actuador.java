@@ -66,30 +66,30 @@ public class Actuador {
 		this.operacionEnDispositivo = operacion;
 	}
 	
-	public void actualizar(Integer estado){
-		String op = "(" + estado + " " + operacion + " " + regla + ")";
-		ScriptEngineManager manager = new ScriptEngineManager();
-		ScriptEngine engine = manager.getEngineByName("js");
-		boolean result;
-		try {
-			result = (boolean) engine.eval(op);
-			if(result){
-				for(DispositivoInteligente disp : dispositivos){
-					switch(operacionEnDispositivo){
-						case "encender":
-							disp.encender();
-							break;
-						case "apagar":
-							disp.apagar();
-							break;
-						case "ahorro":
-							disp.ahorroEnergia();
-							break;
-					}
-				}
-			}
-		} catch (ScriptException e) {
-			e.printStackTrace();
-		}
-	}
+//	public void actualizar(Integer estado){
+//		String op = "(" + estado + " " + operacion + " " + regla + ")";
+//		ScriptEngineManager manager = new ScriptEngineManager();
+//		ScriptEngine engine = manager.getEngineByName("js");
+//		boolean result;
+//		try {
+//			result = (boolean) engine.eval(op);
+//			if(result){
+//				for(DispositivoInteligente disp : dispositivos){
+//					switch(operacionEnDispositivo){
+//						case "encender":
+//							disp.encender();
+//							break;
+//						case "apagar":
+//							disp.apagar();
+//							break;
+//						case "ahorro":
+//							disp.ahorroEnergia();
+//							break;
+//					}
+//				}
+//			}
+//		} catch (ScriptException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
