@@ -1,7 +1,6 @@
 package estadosDispositivos;
 
 import org.joda.time.LocalDateTime;
-
 import entidades.DispositivoInteligente;
 
 public interface EstadoDispositivo {

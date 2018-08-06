@@ -1,11 +1,14 @@
 package estadosDispositivos;
 
 import org.joda.time.LocalDateTime;
-
 import entidades.DispositivoInteligente;
 
 public class Apagado implements EstadoDispositivo {
-
+	
+	public Apagado(){
+		LocalDateTime.now();
+	}
+		
 	@Override
 	public void apagarDispositivo(DispositivoInteligente dispositivo) {
 		
@@ -13,12 +16,14 @@ public class Apagado implements EstadoDispositivo {
 
 	@Override
 	public void encenderDispositivo(DispositivoInteligente dispositivo) {
-
+		LocalDateTime.now();
+		dispositivo.addEstado(new Encendido());
 	}
 
 	@Override
 	public void ponerEnModoAhorro(DispositivoInteligente dispositivo) {
-		
+		LocalDateTime.now();
+		dispositivo.addEstado(new ModoAhorro());
 	}
 
 	@Override
@@ -30,7 +35,7 @@ public class Apagado implements EstadoDispositivo {
 	public Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta,
 			DispositivoInteligente dispositivo) {
 		
-		return null;
+		return 0.0;
 	}
 
 }
