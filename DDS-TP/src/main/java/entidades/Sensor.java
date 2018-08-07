@@ -38,10 +38,10 @@ public class Sensor {
 		this.estado = estado;
 	}
 	
-//	public void actualizar(){
-//		for(Actuador act : actuadores){
-//			act.actualizar(estado);
-//		}
-//	}
+	public void actualizar(){
+		for(Actuador act : actuadores){
+			act.actualizar(estado);
+		}
+	}
 	
 }
