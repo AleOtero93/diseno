@@ -7,6 +7,8 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import accionesDispositivo.AccionesSobreDispositivos;
+
 public class Actuador {
 	private Integer regla;
 	private String operacion;
@@ -57,11 +59,7 @@ public class Actuador {
 	public void setOperacion(String operacion) {
 		this.operacion = operacion;
 	}
-	
-	public String getOperacionEnDisp() {
-		return operacionEnDispositivo;
-	}
-
+		
 	public void setOperacionEnDisp(AccionesSobreDispositivos operacion) {
 		this.operacionEnDispositivo = operacion;
 	}
@@ -75,7 +73,7 @@ public class Actuador {
 			result = (boolean) engine.eval(op);
 			if(result){
 				for(DispositivoInteligente disp : dispositivos){
-					operacionEnDispositivo.ejecutar();
+					operacionEnDispositivo.ejecutar(disp);
 				}
 			}
 		} catch (ScriptException e) {

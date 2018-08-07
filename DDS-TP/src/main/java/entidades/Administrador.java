@@ -17,7 +17,6 @@ public class Administrador extends Usuario {
 			DateTime fechaAltaSistema,
 			Integer Id) {
 		super(nombre, apellido, usuario, password);
-		// TODO Auto-generated constructor stub
 		
 		this.domicilio = domicilio;
 		this.fechaAltaSistema = fechaAltaSistema;

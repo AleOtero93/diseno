@@ -5,47 +5,64 @@ import org.junit.Test;
 import entidades.Cliente;
 import entidades.Categoria;
 import entidades.Dispositivo;
+import entidades.DispositivoEstandar;
 import entidades.TipoDocumento;
+import estadosDispositivos.Apagado;
 import estadosDispositivos.Encendido;
 import entidades.DispositivoInteligente;
+import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Before;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 
 public class ClienteTest {
 	
 	Cliente cliente;
-	DispositivoInteligente dispositivo;
+	DispositivoInteligente heladera;
+	DispositivoInteligente celular;
+	DispositivoEstandar lampara;
+	
+	List<DispositivoInteligente> dispositivosCliente = new ArrayList<>();
+	
 	
 	@Before
 	public void BeforeMethod() {
 		cliente = new Cliente("Alejandro", "Otero", "aotero", "admin123", TipoDocumento.DNI,12345,new Categoria("TestCat",1,2,1f,2f));
-		dispositivo = new DispositivoInteligente ("heladera",1234,new Encendido(),15.0,10.0);
-		cliente.agregarDisp(dispositivo);
+		heladera = new DispositivoInteligente ("heladera",1234,new Encendido(),85.0,10.0);
+		celular = new DispositivoInteligente("celular", 1111, new Apagado(), 25.0, 5.0);
+		lampara = new DispositivoEstandar("lampara", 4567, 15.0, 8);
+		cliente.setDispositivos(dispositivosCliente);
+		cliente.agregarDisp(heladera);
+		cliente.agregarDisp(celular);
+		
 	}	
 		
 	@Test
 	public void testDispositivoEstaEncendido(){		
-		Assert.assertEquals(true, dispositivo.estaEncendido());
+		Assert.assertEquals(true, heladera.estaEncendido());
 	}
 	
-//	@Test
-//	public void testEliminarDispositivo(){
-//		cliente.eliminarDisp(dispositivo.getNombre());
-//		Assert.assertEquals(0,cliente.cantDisp());
-//	}
-//	
+	@Test
+	public void testEliminarDispositivo(){
+		cliente.eliminarDisp(heladera);
+		Assert.assertThat(0, is(cliente.cantidadTotalDeDispositivos()));
+	}
+	
 	@Test
 	public void testCantidadDeDispositivosInteligentesEncendidos(){
-		Assert.assertSame(1, cliente.cantidadDeDispositivosEncendidos());
+		Assert.assertThat(1, is (cliente.cantidadDeDispositivosEncendidos()));
 		}
+		
+	@Test
+    public void testPuntosClienteConDispositivosInteligentes() {
+    	Assert.assertThat(15, is(cliente.getPuntos()));
+    }
 	
-//	@Test
-//	public void testCantidadDeDispositovosEnEstadoEncendido() {
-//		Assert.assertEquals(1,cliente.cantDispEnEstado(1));
-//	}	
-//	
+	
 }

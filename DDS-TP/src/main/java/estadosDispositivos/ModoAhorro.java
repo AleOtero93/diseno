@@ -4,8 +4,6 @@ import org.joda.time.LocalDateTime.*;
 import entidades.DispositivoInteligente;
 import static org.joda.time.LocalDateTime.*;
 
-import java.util.Optional;
-
 import org.joda.time.Hours;
 import org.joda.time.Interval;
 import org.joda.time.LocalDateTime;

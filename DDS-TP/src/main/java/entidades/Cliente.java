@@ -14,7 +14,7 @@ public class Cliente extends Usuario {
 	private TipoDocumento tipoDocumento;
 	private List<DispositivoInteligente> dispositivosInteligentes;
 	private List<DispositivoEstandar> dispositivosEstandares;
-	private Integer puntos;
+	private Integer puntos = 0;
 	private Integer nroDocumento;
 	
 	public Cliente(	String nombre, 
@@ -31,15 +31,16 @@ public class Cliente extends Usuario {
 		this.nroDocumento = nroDocumento;
 		this.dispositivosInteligentes = new ArrayList<DispositivoInteligente>();
 		this.dispositivosEstandares = new ArrayList<DispositivoEstandar>();
-		this.puntos = 0;
+		
 	}
 	
 	public List<DispositivoInteligente> getDispositivos() {
 		return dispositivosInteligentes;
 	}
 
-	public void setDispositivos(List<DispositivoInteligente> dispositivos) {
-		this.dispositivosInteligentes = dispositivos;
+	public void setDispositivos(List<DispositivoInteligente> dispositivosInteligentes) {
+		this.dispositivosInteligentes = dispositivosInteligentes;
+		this.puntos += 15 * dispositivosInteligentes.size();
 	}
 	
 	public List<DispositivoEstandar> getDispositivosEstandares() {
@@ -90,56 +91,13 @@ public class Cliente extends Usuario {
         accion.ejecutar(dispositivo);
     }
 	
-//	public boolean dispEncendido(Dispositivo dispositivo) {
-//		if(dispositivo.getTipo() == 1){//Si es Inteligente
-//			String nombre = dispositivo.getNombre();
-//	
-//			for(Dispositivo disp : dispositivos) {
-//				if(disp.getNombre().equals(nombre)) {
-//					return ((DispositivoInteligente)dispositivo).encendido();
-//					
-//				}
-//			}
-//		}
-//		return false;
-//	}
-	
-	
-//	public void eliminarDisp(String nomDisp){
-//		for(int i=0;i<dispositivos.size();i++) {
-//			if(dispositivos.get(i).getNombre().equalsIgnoreCase(nomDisp)) {
-//				dispositivos.remove(i);
-//				break;
-//			}
-//		}
-//	}
-//	
-//	public int cantDisp(){
-//		return dispositivos.size();
-//	}
-//	
-//	public int cantDispEnEstado(Integer estado) {
-//		int cont = 0;
-//		for(Dispositivo disp : dispositivos) {
-//			if(disp.getTipo() == 1 && ((DispositivoInteligente)disp).getEstado() == estado) {
-//				cont++;				
-//			}
-//		}
-//		return cont;
-//	}
-	
-//	public void convertirDisp(Dispositivo disp) {
-//		this.puntos += 10;
-//		((DispositivoEstandar)disp).ConvertirInteligente();
-//		disp = null;
-//	}
-//	
-//	public void registrarDisp(Dispositivo disp) {
-//		this.agregarDisp(disp);
-//		this.puntos += 15;
-//	}
+	public Integer cantidadTotalDeDispositivos() {
+        return this.dispositivosInteligentes.size() + dispositivosEstandares.size();
+    }
 
-	
-	
-	
+	public Integer getPuntos() {
+		return puntos;
+	}
+
+
 }

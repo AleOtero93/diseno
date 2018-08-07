@@ -1,18 +1,46 @@
 package tests;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import accionesDispositivo.AccionesSobreDispositivos;
 import entidades.Actuador;
 import entidades.DispositivoInteligente;
 import entidades.Sensor;
+import estadosDispositivos.Apagado;
+import estadosDispositivos.Encendido;
 
 public class ActuadorTest {
 
-	DispositivoInteligente dispositivo;
+	DispositivoInteligente aireAcondicionado;
 	Actuador actuador;
 	Sensor sensor;
+	AccionesSobreDispositivos encender;
+	AccionesSobreDispositivos apagar;
+	List<Actuador> actuadores = new ArrayList<>();
+	List<DispositivoInteligente> dispositivosCliente = new ArrayList<>();
+		
+	@Before
+	public void initialize(){
+		aireAcondicionado = new DispositivoInteligente("aire acondicionado", 111111, new Apagado(), 10.0 , 5.0);
+		sensor = new Sensor(20);
+		actuador = new Actuador(18, "<", encender);
+	}
+		
+	@Test
+	public void testActualizarEstadoDispositivo(){
+		sensor.agregarAct(actuador);
+		actuador.agregarDisp(aireAcondicionado);
+		sensor.actualizar();
+		Assert.assertEquals(false,aireAcondicionado.estaEncendido());
+	
+	}
+	
 	
 //	@Before
 //	public void BeforeMethod() {

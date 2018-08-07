@@ -40,27 +40,7 @@ public class DispositivoInteligenteTest {
 		cliente.ejecutarAccionSobreDispositivo(encender, heladera);
 		Assert.assertTrue(heladera.estaEncendido());
 	}
+
 	
-//	@Test
-//    public void testEstadoAhorroDeEnergia(){
-//		  heladera.ahorroEnergia();
-//		  		Assert.assertEquals(true, heladera.getEstado()==2);
-//		  		Assert.assertEquals(false, telefono.getEstado()==2);
-//	}	
-//		
-//	@Test
-//    public void testCambioEstadoAhorroDeEnergia(){
-//		  heladera.ahorroEnergia();
-//		  		Assert.assertEquals(true, heladera.getEstado()==2);
-//		  heladera.encender();
-//		  		Assert.assertEquals(true,heladera.encendido());
-//	}	
-//	
-//	@Test
-//    public void testCambiarEstado(){
-//		        heladera.apagar();
-//				Assert.assertEquals(true, heladera.apagado());
-//				Assert.assertEquals(false, telefono.apagado());
-//				
-//	}	
+	
 }
