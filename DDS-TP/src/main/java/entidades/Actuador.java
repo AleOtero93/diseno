@@ -13,7 +13,7 @@ public class Actuador {
 	private AccionesSobreDispositivos operacionEnDispositivo;
 	private List<DispositivoInteligente> dispositivos;
 	
-	public Actuador(Integer regla, String operacion, String operacionEnDispositivo){
+	public Actuador(Integer regla, String operacion, AccionesSobreDispositivos operacionEnDispositivo){
 		this.regla = regla;
 		this.operacion = operacion;
 		this.operacionEnDispositivo = operacionEnDispositivo;
@@ -62,7 +62,7 @@ public class Actuador {
 		return operacionEnDispositivo;
 	}
 
-	public void setOperacionEnDisp(String operacion) {
+	public void setOperacionEnDisp(AccionesSobreDispositivos operacion) {
 		this.operacionEnDispositivo = operacion;
 	}
 	
