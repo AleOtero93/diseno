@@ -40,7 +40,7 @@ public class ClienteTest {
 		cliente.setDispositivos(dispositivosCliente);
 		cliente.agregarDisp(heladera);
 		cliente.agregarDisp(celular);
-		
+			
 	}	
 		
 	@Test
@@ -50,8 +50,8 @@ public class ClienteTest {
 	
 	@Test
 	public void testEliminarDispositivo(){
-		cliente.eliminarDisp(heladera);
-		Assert.assertThat(0, is(cliente.cantidadTotalDeDispositivos()));
+		cliente.eliminarDisp(celular);
+		Assert.assertThat(1, is(cliente.cantidadTotalDeDispositivos()));
 	}
 	
 	@Test
@@ -61,7 +61,7 @@ public class ClienteTest {
 		
 	@Test
     public void testPuntosClienteConDispositivosInteligentes() {
-    	Assert.assertThat(15, is(cliente.getPuntos()));
+    	Assert.assertThat(15, is (cliente.getPuntos()));
     }
 	
 	

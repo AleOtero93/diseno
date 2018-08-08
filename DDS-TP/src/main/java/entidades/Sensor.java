@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sensor {
-	private Integer estado;
+	private Integer medicion;
 	private List<Actuador> actuadores;
 	
-	public Sensor(Integer estado){
-		this.estado = estado;
+	public Sensor(Integer medicion){
+		this.medicion = medicion;
 		this.actuadores = new ArrayList<Actuador>();
 	}
 	
@@ -30,17 +30,17 @@ public class Sensor {
 		this.actuadores = actuadores;
 	}
 
-	public Integer getEstado() {
-		return estado;
+	public Integer getMedicion() {
+		return medicion;
 	}
 
-	public void setEstado(Integer estado) {
-		this.estado = estado;
+	public void setMedicion(Integer medicion) {
+		this.medicion = medicion;
 	}
 	
 	public void actualizar(){
 		for(Actuador act : actuadores){
-			act.actualizar(estado);
+			act.actualizar(medicion);
 		}
 	}
 	

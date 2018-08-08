@@ -69,7 +69,11 @@ public class Cliente extends Usuario {
 	public TipoDocumento getTipoDocumento() {
 		return tipoDocumento;
 	}
-
+	
+	public Integer getPuntos() {
+		return puntos;
+	}
+	
 	public void setTipoDocumento(TipoDocumento tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
@@ -95,9 +99,7 @@ public class Cliente extends Usuario {
         return this.dispositivosInteligentes.size() + dispositivosEstandares.size();
     }
 
-	public Integer getPuntos() {
-		return puntos;
-	}
+	
 
 
 }

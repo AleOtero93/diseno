@@ -9,6 +9,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import accionesDispositivo.AccionesSobreDispositivos;
+import accionesDispositivo.ApagarDispositivo;
+import accionesDispositivo.EncenderDispositivo;
 import entidades.Actuador;
 import entidades.DispositivoInteligente;
 import entidades.Sensor;
@@ -28,16 +30,19 @@ public class ActuadorTest {
 	@Before
 	public void initialize(){
 		aireAcondicionado = new DispositivoInteligente("aire acondicionado", 111111, new Apagado(), 10.0 , 5.0);
+		apagar = new ApagarDispositivo();
+		encender = new EncenderDispositivo();
 		sensor = new Sensor(20);
 		actuador = new Actuador(18, "<", encender);
 	}
 		
 	@Test
 	public void testActualizarEstadoDispositivo(){
-		sensor.agregarAct(actuador);
 		actuador.agregarDisp(aireAcondicionado);
+		sensor.agregarAct(actuador);
+		sensor.setMedicion(17);
 		sensor.actualizar();
-		Assert.assertEquals(false,aireAcondicionado.estaEncendido());
+		Assert.assertEquals(true,aireAcondicionado.estaEncendido());
 	
 	}
 	
