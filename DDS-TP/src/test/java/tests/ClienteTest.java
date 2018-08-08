@@ -40,7 +40,7 @@ public class ClienteTest {
 		cliente.setDispositivos(dispositivosCliente);
 		cliente.agregarDisp(heladera);
 		cliente.agregarDisp(celular);
-			
+					
 	}	
 		
 	@Test
@@ -61,7 +61,7 @@ public class ClienteTest {
 		
 	@Test
     public void testPuntosClienteConDispositivosInteligentes() {
-    	Assert.assertThat(15, is (cliente.getPuntos()));
+    	Assert.assertThat(30, is (cliente.getPuntos()));
     }
 	
 	

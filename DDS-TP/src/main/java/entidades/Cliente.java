@@ -40,20 +40,20 @@ public class Cliente extends Usuario {
 
 	public void setDispositivos(List<DispositivoInteligente> dispositivosInteligentes) {
 		this.dispositivosInteligentes = dispositivosInteligentes;
-		this.puntos += 15 * dispositivosInteligentes.size();
+		
 	}
 	
 	public List<DispositivoEstandar> getDispositivosEstandares() {
 		return dispositivosEstandares;
 	}
 
-	public void setDispositivos(List<DispositivoEstandar> dispositivosEstandares) {
-		this.dispositivosEstandares = dispositivosEstandares;
-	}
+//	public void setDispositivos(List<DispositivoEstandar> dispositivosEstandares) {
+//		this.dispositivosEstandares = dispositivosEstandares;
+//	}
 
-	public void agregarDisp(DispositivoInteligente disp,Integer puntos=15){
+	public void agregarDisp(DispositivoInteligente disp){
 		dispositivosInteligentes.add(disp);
-		this.puntos += puntos;
+		this.puntos += 15;
 	}
 	public void agregarDisp(DispositivoEstandar disp){
 		dispositivosEstandares.add(disp);
