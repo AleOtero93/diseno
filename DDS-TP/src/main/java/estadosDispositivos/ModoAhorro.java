@@ -24,6 +24,11 @@ public class ModoAhorro implements EstadoDispositivo {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 	}
+
+	@Override
+	public double obtenerConsumo(DispositivoInteligente dispositivo) {
+		return dispositivo.getConsumoPorHoraEnAhorro;
+	}
 	
 	@Override
 	public void apagarDispositivo(DispositivoInteligente dispositivo) {

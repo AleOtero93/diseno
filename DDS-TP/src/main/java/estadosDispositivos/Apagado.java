@@ -8,6 +8,11 @@ public class Apagado implements EstadoDispositivo {
 	public Apagado(){
 		LocalDateTime.now();
 	}
+
+	@Override
+	public double obtenerConsumo(DispositivoInteligente dispositivo) {
+		return 0;
+	}
 		
 	@Override
 	public void apagarDispositivo(DispositivoInteligente dispositivo) {

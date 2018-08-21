@@ -18,6 +18,11 @@ public class Encendido implements EstadoDispositivo {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 	}
+
+	@Override
+	public double obtenerConsumo(DispositivoInteligente dispositivo) {
+		return dispositivo.getConsumoPorHora;
+	}
 	
 	@Override
 	public void apagarDispositivo(DispositivoInteligente dispositivo) {

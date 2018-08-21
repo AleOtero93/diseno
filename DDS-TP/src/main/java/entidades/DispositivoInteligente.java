@@ -10,15 +10,19 @@ import estadosDispositivos.EstadoDispositivo;
 
 public class DispositivoInteligente extends Dispositivo{
 
+	private Integer usoMinimo;
+	private Integer usoMaximo;
 	private Double consumoPorHora;
 	private Double consumoPorHoraEnAhorro;
 	private List<EstadoDispositivo> estados = new ArrayList<>();
 	
-	public DispositivoInteligente(String nombre, Integer idFab, EstadoDispositivo estado, Double consumoPorHora, Double consumoEnAhorro) {
+	public DispositivoInteligente(String nombre, Integer idFab, EstadoDispositivo estado, Double consumoPorHora, Double consumoEnAhorro, Integer usoMinimo, Integer usoMaximo) {
 		super(nombre, idFab);
 		this.setConsumoPorHora(consumoPorHora);
 		this.setConsumoPorHoraEnAhorro(consumoEnAhorro);
 		this.estados.add(estado);
+		this.usoMinimo = usoMinimo;
+		this.usoMaximo = usoMaximo;
 	}
 	
 	public boolean estaEncendido(){
@@ -44,6 +48,22 @@ public class DispositivoInteligente extends Dispositivo{
 	private EstadoDispositivo ultimoEstado(){
         return this.estados.get(estados.size()-1);
     }
+
+    public Integer getUsoMinimo() {
+		return usoMinimo;
+	}
+
+	public void setUsoMinimo(Integer usoMinimo) {
+		this.usoMinimo = usoMinimo;
+	}
+
+	public Integer getUsoMaximo() {
+		return usoMaximo;
+	}
+
+	public void setUsoMaximo(Integer usoMaximo) {
+		this.usoMaximo = usoMaximo;
+	}
 	
 	public Double getConsumoPorHora() {
 		return consumoPorHora;

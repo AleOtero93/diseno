@@ -19,7 +19,7 @@ public class SimplexFacade {
 		
 		for (int i=0;i<dispositivosInteligentes.size();i++) {
 		    cantDispositivos[i] = 1;
-		    consumoDispositivos[i] = dispositivosInteligentes.get(i).getConsumoPorHora();
+		    consumoDispositivos[i] = dispositivosInteligentes.get(i).obtenerConsumo(dispositivosInteligentes.get(i));
 		}
 		
 		SimplexFacade simplexFacade = new SimplexFacade(GoalType.MAXIMIZE, true);
@@ -27,15 +27,15 @@ public class SimplexFacade {
 		
 		simplexFacade.agregarRestriccion(Relationship.LEQ, 440640, 	consumoDispositivos);
 		
-		int maximo = 0;
-		int minimo = 0;
+		int usoMaximo = 0;
+		int usoMinimo = 0;
 		for (int i=0;i<dispositivosInteligentes.size();i++) {
 			Arrays.fill(dispositivoFill, 0);
 			dispositivoFill[i] = 1;
-			maximo = dispositivosInteligentes.get(i).getConsumoMaximo();
-			minimo = dispositivosInteligentes.get(i).getConsumoMinimo();
-			simplexFacade.agregarRestriccion(Relationship.GEQ, minimo, dispositivosFill);
-			simplexFacade.agregarRestriccion(Relationship.LEQ, maximo, dispositivosFill);
+			usoMaximo = dispositivosInteligentes.get(i).getUsoMaximo();
+			usoMinimo = dispositivosInteligentes.get(i).getUsoMinimo();
+			simplexFacade.agregarRestriccion(Relationship.GEQ, usoMinimo, dispositivosFill);
+			simplexFacade.agregarRestriccion(Relationship.LEQ, usoMaximo, dispositivosFill);
 		}
 		
 		PointValuePair solucion = simplexFacade.resolver();
