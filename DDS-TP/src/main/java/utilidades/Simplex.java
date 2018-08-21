@@ -19,7 +19,7 @@ public class SimplexFacade {
 		
 		for (int i=0;i<dispositivosInteligentes.size();i++) {
 		    cantDispositivos[i] = 1;
-		    consumoDispositivos[i] = dispositivosInteligentes.get(i).obtenerConsumo(dispositivosInteligentes.get(i));
+		    consumoDispositivos[i] = dispositivosInteligentes.get(i).getConsumoPorHora();
 		}
 		
 		SimplexFacade simplexFacade = new SimplexFacade(GoalType.MAXIMIZE, true);
