@@ -23,7 +23,7 @@ public class DispositivoInteligenteTest {
 	@Before
     public void initialize() {
 		cliente = new Cliente("Alejandro", "Otero", "aotero", "admin123", TipoDocumento.DNI,12345,new Categoria("TestCat",1,2,1f,2f));
-		heladera = new DispositivoInteligente("heladera", 1234, new Apagado(), 15.0, 10.0);
+		heladera = new DispositivoInteligente("heladera", 1234, new Apagado(), 15.0, 10.0,0,0);
 		apagar = new ApagarDispositivo();
 		encender = new EncenderDispositivo();
 	}

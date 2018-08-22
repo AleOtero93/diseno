@@ -3,6 +3,7 @@ package utilidades;
 import java.util.Arrays;
 import java.util.List;
 
+import simplex.facade.*;
 import org.apache.commons.math3.optim.PointValuePair;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
@@ -13,9 +14,9 @@ public class Simplex {
 	private PointValuePair solucion;
 	
 	public Simplex(List<DispositivoInteligente> dispositivosInteligentes) {
-		int[] cantDispositivos = new int[dispositivosInteligentes.size()];
+		double[] cantDispositivos = new double[dispositivosInteligentes.size()];
 		double[] consumoDispositivos = new double[dispositivosInteligentes.size()];
-		int[] dispositivoFill = new int[dispositivosInteligentes.size()];
+		double[] dispositivoFill = new double[dispositivosInteligentes.size()];
 		
 		for (int i=0;i<dispositivosInteligentes.size();i++) {
 		    cantDispositivos[i] = 1;
@@ -34,11 +35,15 @@ public class Simplex {
 			dispositivoFill[i] = 1;
 			usoMaximo = dispositivosInteligentes.get(i).getUsoMaximo();
 			usoMinimo = dispositivosInteligentes.get(i).getUsoMinimo();
-			simplexFacade.agregarRestriccion(Relationship.GEQ, usoMinimo, dispositivosFill);
-			simplexFacade.agregarRestriccion(Relationship.LEQ, usoMaximo, dispositivosFill);
+			simplexFacade.agregarRestriccion(Relationship.GEQ, usoMinimo, dispositivoFill);
+			simplexFacade.agregarRestriccion(Relationship.LEQ, usoMaximo, dispositivoFill);
 		}
 		
 		PointValuePair solucion = simplexFacade.resolver();
 		this.solucion = solucion;
+	}
+	
+	public PointValuePair getSolucion() {
+		return this.solucion;
 	}
 }

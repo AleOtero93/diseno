@@ -27,7 +27,7 @@ public class ModoAhorro implements EstadoDispositivo {
 
 	@Override
 	public double obtenerConsumo(DispositivoInteligente dispositivo) {
-		return dispositivo.getConsumoPorHoraEnAhorro;
+		return dispositivo.getConsumoPorHoraEnAhorro();
 	}
 	
 	@Override

@@ -29,7 +29,7 @@ public class ActuadorTest {
 		
 	@Before
 	public void initialize(){
-		aireAcondicionado = new DispositivoInteligente("aire acondicionado", 111111, new Apagado(), 10.0 , 5.0);
+		aireAcondicionado = new DispositivoInteligente("aire acondicionado", 111111, new Apagado(), 10.0 , 5.0,0,0);
 		apagar = new ApagarDispositivo();
 		encender = new EncenderDispositivo();
 		sensor = new Sensor(20);

@@ -21,7 +21,7 @@ public class Encendido implements EstadoDispositivo {
 
 	@Override
 	public double obtenerConsumo(DispositivoInteligente dispositivo) {
-		return dispositivo.getConsumoPorHora;
+		return dispositivo.getConsumoPorHora();
 	}
 	
 	@Override

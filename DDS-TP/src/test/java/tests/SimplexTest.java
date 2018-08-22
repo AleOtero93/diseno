@@ -22,11 +22,12 @@ import java.util.List;
 
 import org.junit.Assert;
 
-public class ClienteTest {
+public class SimplexTest {
 	
 	Cliente cliente;
-	DispositivoInteligente heladera;
-	DispositivoInteligente celular;
+	DispositivoInteligente televisor;
+	DispositivoInteligente lavaropas;
+	DispositivoInteligente ventilador;
 	DispositivoEstandar lampara;
 	
 	List<DispositivoInteligente> dispositivosCliente = new ArrayList<>();
@@ -48,10 +49,10 @@ public class ClienteTest {
 	@Test
 	public void testSimplex(){
 		Simplex simplex = new Simplex(cliente.getDispositivos());
-		Assert.assertEquals(760, simplex.solucion.getValue(), 0.01);
-		Assert.assertEquals(360, simplex.solucion.getPoint()[0], 0.01); // <--- X2
-		Assert.assertEquals(30, simplex.solucion.getPoint()[1], 0.01); // <--- X1
-		Assert.assertEquals(370, simplex.solucion.getPoint()[2], 0.01); // <--- X0
+		Assert.assertEquals(760, simplex.getSolucion().getValue(), 0.01);
+		Assert.assertEquals(360, simplex.getSolucion().getPoint()[0], 0.01); // <--- X2
+		Assert.assertEquals(30, simplex.getSolucion().getPoint()[1], 0.01); // <--- X1
+		Assert.assertEquals(370, simplex.getSolucion().getPoint()[2], 0.01); // <--- X0
 	}
 	
 }

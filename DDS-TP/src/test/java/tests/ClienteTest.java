@@ -34,8 +34,8 @@ public class ClienteTest {
 	@Before
 	public void BeforeMethod() {
 		cliente = new Cliente("Alejandro", "Otero", "aotero", "admin123", TipoDocumento.DNI,12345,new Categoria("TestCat",1,2,1f,2f));
-		heladera = new DispositivoInteligente ("heladera",1234,new Encendido(),85.0,10.0);
-		celular = new DispositivoInteligente("celular", 1111, new Apagado(), 25.0, 5.0);
+		heladera = new DispositivoInteligente ("heladera",1234,new Encendido(),85.0,10.0,0,0);
+		celular = new DispositivoInteligente("celular", 1111, new Apagado(), 25.0, 5.0,0,0);
 		lampara = new DispositivoEstandar("lampara", 4567, 15.0, 8);
 		cliente.setDispositivos(dispositivosCliente);
 		cliente.agregarDisp(heladera);
