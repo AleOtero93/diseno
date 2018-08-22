@@ -4,8 +4,6 @@ import org.joda.time.DateTime;
 import org.joda.time.Months;
 
 public class Administrador extends Usuario {
-	
-	private String domicilio;
 	private DateTime fechaAltaSistema;
 	private Integer Id;
 
@@ -13,22 +11,12 @@ public class Administrador extends Usuario {
 			String apellido, 
 			String usuario, 
 			String password,
-			String domicilio,
 			DateTime fechaAltaSistema,
 			Integer Id) {
 		super(nombre, apellido, usuario, password);
 		
-		this.domicilio = domicilio;
 		this.fechaAltaSistema = fechaAltaSistema;
 		this.Id = Id;
-	}
-	
-	public String getDomicilio() {
-		return domicilio;
-	}
-
-	public void setDomicilio(String domicilio) {
-		this.domicilio = domicilio;
 	}
 
 	public DateTime getFechaAltaSistema() {

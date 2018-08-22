@@ -10,6 +10,8 @@ import estadosDispositivos.EstadoDispositivo;
 
 public class Cliente extends Usuario {
 
+	private String domicilio;
+	//Cambiar por Latitud y longitud en todos los tests.
 	private Categoria categoria;
 	private TipoDocumento tipoDocumento;
 	private List<DispositivoInteligente> dispositivosInteligentes;
@@ -21,6 +23,7 @@ public class Cliente extends Usuario {
 					String apellido, 
 					String usuario, 
 					String password, 
+					String domicilio,
 					TipoDocumento tipoDocumento,
 					Integer nroDocumento,
 					Categoria categoria) {
@@ -29,9 +32,18 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 		this.tipoDocumento = tipoDocumento;
 		this.nroDocumento = nroDocumento;
+		this.domicilio = domicilio;
 		this.dispositivosInteligentes = new ArrayList<DispositivoInteligente>();
 		this.dispositivosEstandares = new ArrayList<DispositivoEstandar>();
 		
+	}
+	
+	public String getDomicilio() {
+		return domicilio;
+	}
+
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
 	}
 	
 	public List<DispositivoInteligente> getDispositivos() {

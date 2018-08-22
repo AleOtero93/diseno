@@ -35,7 +35,7 @@ public class SimplexTest {
 	
 	@Before
 	public void BeforeMethod() {
-		cliente = new Cliente("Alejandro", "Otero", "aotero", "admin123", TipoDocumento.DNI,12345,new Categoria("TestCat",1,2,1f,2f));
+		cliente = new Cliente("Alejandro", "Otero", "aotero", "admin123","villa crespo", TipoDocumento.DNI,12345,new Categoria("TestCat",1,2,1f,2f));
 		televisor = new DispositivoInteligente ("televisor",1234,new Encendido(),0.18,0.08,90,360);
 		lavaropas = new DispositivoInteligente("lavaropas", 1111, new Encendido(), 0.875, 0.875,6,30);
 		ventilador = new DispositivoInteligente("ventilador", 1111, new Encendido(), 0.06, 0.06,120,360);

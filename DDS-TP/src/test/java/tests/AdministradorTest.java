@@ -15,7 +15,7 @@ public class AdministradorTest {
 	@Before
 	public void BeforeMethod() {
 		fecha = new DateTime("2018-01-01");
-		admin = new Administrador("julian","crespo","admincrespo","1234","Caballito",fecha,123);
+		admin = new Administrador("julian","crespo","admincrespo","1234",fecha,123);
 	}
 	
 	@Test
