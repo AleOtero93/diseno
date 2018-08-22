@@ -58,10 +58,11 @@ public class Transformador {
 	}
 
 	public double energiaConsumida() {
-
-		Double consumoTotal = this.residentes.stream().forEach(residente->residente.consumoEnergia()).sum();
+		Double consumoTotal = 0.00;
+		for (int i=0;i<residentes.size();i++) {
+			consumoTotal += residentes.get(i).consumoEnergia();
+		}
 		return consumoTotal;
-			
 	}
 	
 }
