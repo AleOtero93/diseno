@@ -1,6 +1,6 @@
 package entidades;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 public class DispositivoEstandar extends Dispositivo{
 	
@@ -29,9 +29,10 @@ public class DispositivoEstandar extends Dispositivo{
 	}
 
 	//Calcular el consumo del periodo del dispositivo Estandar
+	
 	@Override
-	public Double consumoPeriodo(DateTime fechaDesde, DateTime fechaHasta) {
-		
+	public Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

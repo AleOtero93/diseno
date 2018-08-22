@@ -1,10 +1,9 @@
 package entidades;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import estadosDispositivos.EstadoDispositivo;
 
@@ -82,11 +81,13 @@ public class DispositivoInteligente extends Dispositivo{
 	}	
 	
 //Calcular el consumo del periodo del dispositivo Inteligente
+
 	@Override
-	public Double consumoPeriodo(DateTime fechaDesde, DateTime fechaHasta) {
-		
-		return null;
+	public Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
+		return this.estados.stream().mapToDouble(estado -> estado.consumoPeriodo(fechaDesde, fechaHasta, this)).sum();
+
 	}
+
 
 
 }

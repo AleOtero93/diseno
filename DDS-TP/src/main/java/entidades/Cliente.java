@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import entidades.DispositivoInteligente;
 import estadosDispositivos.EstadoDispositivo;
 import org.apache.commons.math3.optim.PointValuePair;
+import org.joda.time.LocalDateTime;
+
 import utilidades.Simplex;
 
 public class Cliente extends Usuario {
@@ -164,12 +166,14 @@ public class Cliente extends Usuario {
 		return solucion;
 	}
 
-//	public Object consumoEnergia() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	public double consumoEnergia() {
+		
+		LocalDateTime desde = LocalDateTime.now().minusDays(LocalDateTime.now().getDayOfMonth() - 1).withMillisOfDay(0);
 
-	
+		List<Dispositivo> todosLosDispositivos = new ArrayList<Dispositivo>(this.dispositivosInteligentes);
+		todosLosDispositivos.addAll(this.dispositivosEstandares);
 
+		return todosLosDispositivos.stream().mapToDouble(disp -> disp.consumoPeriodo(desde, LocalDateTime.now())).sum();
+	}
 
 }

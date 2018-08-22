@@ -1,6 +1,6 @@
 package entidades;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 public abstract class Dispositivo {
 	
@@ -26,6 +26,6 @@ public abstract class Dispositivo {
 		this.idFabrica = idFabrica;
 	}
 	
-	public abstract Double consumoPeriodo(DateTime fechaDesde, DateTime fechaHasta);
+	public abstract Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta);
 				
 }
