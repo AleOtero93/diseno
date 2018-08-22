@@ -7,6 +7,8 @@ import accionesDispositivo.AccionesSobreDispositivos;
 import java.util.ArrayList;
 import entidades.DispositivoInteligente;
 import estadosDispositivos.EstadoDispositivo;
+import org.apache.commons.math3.optim.PointValuePair;
+import utilidades.Simplex;
 
 public class Cliente extends Usuario {
 
@@ -136,6 +138,31 @@ public class Cliente extends Usuario {
 	public Integer cantidadTotalDeDispositivos() {
         return this.dispositivosInteligentes.size() + dispositivosEstandares.size();
     }
+	
+	public PointValuePair hogarEficiente() {
+		//Creo la variable a devolver y la lista de dispositivos a enviar
+		PointValuePair solucion = null;
+		List<DispositivoInteligente> dispositivosRegulables = new ArrayList<DispositivoInteligente>();
+		
+		//Solo agrego a la lista los dispositivos que tienen seteado un usoMinimo y usoMaximo
+		 //(heladeras, por ej., no tendran
+		for (int i=0;i<dispositivosInteligentes.size();i++) {
+			if(dispositivosInteligentes.get(i).getUsoMinimo() > 0 &&
+					dispositivosInteligentes.get(i).getUsoMaximo() > 0 &&
+					dispositivosInteligentes.get(i).getUsoMaximo() > dispositivosInteligentes.get(i).getUsoMinimo()) {
+				dispositivosRegulables.add(dispositivosInteligentes.get(i));
+			}
+		}
+		
+		//Si hay algun dispositivo en esa lista, creo el simplex y obtengo la solucion
+		if(dispositivosRegulables.size() > 0) {
+			Simplex simplex = new Simplex(dispositivosRegulables);
+			solucion = simplex.getSolucion();
+		}
+		
+		//Devuelvo null si no hubo dispositivos o el resultado si los hubo
+		return solucion;
+	}
 
 //	public Object consumoEnergia() {
 //		// TODO Auto-generated method stub
