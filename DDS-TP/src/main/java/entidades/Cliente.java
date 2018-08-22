@@ -12,6 +12,8 @@ public class Cliente extends Usuario {
 
 	private String domicilio;
 	//Cambiar por Latitud y longitud en todos los tests.
+	private Float domicilioLongitud;
+	private Float domicilioLatitud;
 	private Categoria categoria;
 	private TipoDocumento tipoDocumento;
 	private List<DispositivoInteligente> dispositivosInteligentes;
@@ -86,6 +88,22 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 	}
 
+	public Float getDomicilioLongitud() {
+		return domicilioLongitud;
+	}
+
+	public void setDomicilioLongitud(Float domicilioLongitud) {
+		this.domicilioLongitud = domicilioLongitud;
+	}
+
+	public Float getDomicilioLatitud() {
+		return domicilioLatitud;
+	}
+
+	public void setDomicilioLatitud(Float domicilioLatitud) {
+		this.domicilioLatitud = domicilioLatitud;
+	}
+
 	public TipoDocumento getTipoDocumento() {
 		return tipoDocumento;
 	}
@@ -118,6 +136,11 @@ public class Cliente extends Usuario {
 	public Integer cantidadTotalDeDispositivos() {
         return this.dispositivosInteligentes.size() + dispositivosEstandares.size();
     }
+
+//	public Object consumoEnergia() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	
 

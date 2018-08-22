@@ -74,4 +74,10 @@ public class Zona {
 	public void agregarTransformador (Transformador transformador) {
 		transformadores.add(transformador);
 	}
+	
+	public double consumoTotal() {
+		Double consumoTotal = this.transformadores.stream()
+				.mapToDouble(transformador -> transformador.energiaConsumida()).sum();
+		return consumoTotal;
+	}
 }
