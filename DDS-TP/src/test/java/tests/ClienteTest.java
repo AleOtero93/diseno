@@ -61,7 +61,7 @@ public class ClienteTest {
 		
 	@Test
     public void testPuntosClienteConDispositivosInteligentes() {
-    	Assert.assertThat(30, is (cliente.getPuntos()));
+    	Assert.assertThat(15, is (cliente.getPuntos()));
     }
 	
 	

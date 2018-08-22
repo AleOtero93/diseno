@@ -9,6 +9,10 @@ import entidades.DispositivoInteligente;
 import estadosDispositivos.EstadoDispositivo;
 
 public class Cliente extends Usuario {
+	
+	
+	private Float domicilioLongitud;
+	private Float domicilioLatitus;
 
 	private Categoria categoria;
 	private TipoDocumento tipoDocumento;
@@ -32,6 +36,19 @@ public class Cliente extends Usuario {
 		this.dispositivosInteligentes = new ArrayList<DispositivoInteligente>();
 		this.dispositivosEstandares = new ArrayList<DispositivoEstandar>();
 		
+	}
+
+	public Float getDomicilioLongitud() {
+		return domicilioLongitud;
+	}
+	public void setDomicilioLongitud(Float domicilioLongitud) {
+		this.domicilioLongitud = domicilioLongitud;
+	}
+	public Float getDomicilioLatitus() {
+		return domicilioLatitus;
+	}
+	public void setDomicilioLatitus(Float domicilioLatitus) {
+		this.domicilioLatitus = domicilioLatitus;
 	}
 	
 	public List<DispositivoInteligente> getDispositivos() {
@@ -107,7 +124,15 @@ public class Cliente extends Usuario {
         return this.dispositivosInteligentes.size() + dispositivosEstandares.size();
     }
 
+	//Calcula distancia entre dos puntos
+	public Float distancia (Float longitudA, Float longitudB, Float latitudA, Float latitudB) {
+		return (float) Math.sqrt(Math.pow(longitudB-longitudA,2)+Math.pow(latitudB-latitudA,2));
 	
-
+	}
+	
+	//Busca transformador mas cercano
+	public void buscarTransformadorCercano(List<Transformador> transformadores) {
+		
+	}
 
 }
