@@ -18,6 +18,11 @@ public class ModoAhorro implements EstadoDispositivo {
 	public ModoAhorro(){
 		fechaInicio = now();
 	}
+	
+	@Override
+	public void setFechaFin(LocalDateTime fecha) {
+		this.fechaFin = fecha;
+	}
 
 	public ModoAhorro(LocalDateTime fechaInicio, LocalDateTime fechaFin){
 		

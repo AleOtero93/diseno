@@ -14,6 +14,11 @@ public class Encendido implements EstadoDispositivo {
 		fechaInicio = now();
 	}
 	
+	@Override
+	public void setFechaFin(LocalDateTime fecha) {
+		this.fechaFin = fecha;
+	}
+	
 	public Encendido(LocalDateTime fechaInicio, LocalDateTime fechaFin){
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;

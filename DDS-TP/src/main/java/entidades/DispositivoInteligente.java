@@ -45,7 +45,7 @@ public class DispositivoInteligente extends Dispositivo{
         this.estados.add(estadoDispositivo);
     }
 	
-	private EstadoDispositivo ultimoEstado(){
+	public EstadoDispositivo ultimoEstado(){
         return this.estados.get(estados.size()-1);
     }
 

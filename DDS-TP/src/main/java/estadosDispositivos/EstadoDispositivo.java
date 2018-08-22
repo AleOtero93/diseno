@@ -8,6 +8,8 @@ public interface EstadoDispositivo {
 	public void apagarDispositivo(DispositivoInteligente dispositivo);
     public void encenderDispositivo(DispositivoInteligente dispositivo);
     public void ponerEnModoAhorro(DispositivoInteligente dispositivo);
+    
+    public void setFechaFin(LocalDateTime fecha);
 
     public double obtenerConsumo(DispositivoInteligente dispositivo);
 

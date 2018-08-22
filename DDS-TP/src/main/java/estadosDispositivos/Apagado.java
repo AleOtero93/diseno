@@ -5,8 +5,16 @@ import entidades.DispositivoInteligente;
 
 public class Apagado implements EstadoDispositivo {
 	
+	private LocalDateTime fechaInicio;
+	private LocalDateTime fechaFin;
+	
 	public Apagado(){
 		LocalDateTime.now();
+	}
+	
+	@Override
+	public void setFechaFin(LocalDateTime fecha) {
+		this.fechaFin = fecha;
 	}
 
 	@Override
