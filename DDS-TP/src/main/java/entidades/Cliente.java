@@ -13,6 +13,10 @@ import org.joda.time.LocalDateTime;
 import utilidades.Simplex;
 
 public class Cliente extends Usuario {
+	
+	
+	private Float domicilioLongitud;
+	private Float domicilioLatitus;
 
 	private String domicilio;
 	//Cambiar por Latitud y longitud en todos los tests.
@@ -42,6 +46,19 @@ public class Cliente extends Usuario {
 		this.dispositivosInteligentes = new ArrayList<DispositivoInteligente>();
 		this.dispositivosEstandares = new ArrayList<DispositivoEstandar>();
 		
+	}
+
+	public Float getDomicilioLongitud() {
+		return domicilioLongitud;
+	}
+	public void setDomicilioLongitud(Float domicilioLongitud) {
+		this.domicilioLongitud = domicilioLongitud;
+	}
+	public Float getDomicilioLatitus() {
+		return domicilioLatitus;
+	}
+	public void setDomicilioLatitus(Float domicilioLatitus) {
+		this.domicilioLatitus = domicilioLatitus;
 	}
 	
 	public String getDomicilio() {
@@ -140,6 +157,7 @@ public class Cliente extends Usuario {
 	public Integer cantidadTotalDeDispositivos() {
         return this.dispositivosInteligentes.size() + dispositivosEstandares.size();
     }
+<<<<<<< HEAD
 	
 	public PointValuePair hogarEficiente() {
 		//Creo la variable a devolver y la lista de dispositivos a enviar
@@ -174,6 +192,18 @@ public class Cliente extends Usuario {
 		todosLosDispositivos.addAll(this.dispositivosEstandares);
 
 		return todosLosDispositivos.stream().mapToDouble(disp -> disp.consumoPeriodo(desde, LocalDateTime.now())).sum();
+=======
+
+	//Calcula distancia entre dos puntos
+	public Float distancia (Float longitudA, Float longitudB, Float latitudA, Float latitudB) {
+		return (float) Math.sqrt(Math.pow(longitudB-longitudA,2)+Math.pow(latitudB-latitudA,2));
+	
+	}
+	
+	//Busca transformador mas cercano
+	public void buscarTransformadorCercano(List<Transformador> transformadores) {
+		
+>>>>>>> entrega1
 	}
 
 }

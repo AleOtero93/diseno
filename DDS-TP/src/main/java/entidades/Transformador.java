@@ -3,11 +3,15 @@ package entidades;
 import java.util.List;
 
 public class Transformador {
+<<<<<<< HEAD
 
+=======
+>>>>>>> entrega1
 	private String nombre;
 	private Integer id;
 	private Float longitud;
 	private Float latitud;
+<<<<<<< HEAD
 	private List<Cliente> residentes;
 	
 	public Transformador(String nombre, Integer id, List<Cliente> residentes) {
@@ -15,6 +19,10 @@ public class Transformador {
 		this.id=id;
 		this.residentes=residentes;
 		}
+=======
+	private Zona zona;
+	private List<Cliente> clientes;
+>>>>>>> entrega1
 	
 	public String getNombre() {
 		return nombre;
@@ -40,6 +48,7 @@ public class Transformador {
 	public void setLatitud(Float latitud) {
 		this.latitud = latitud;
 	}
+<<<<<<< HEAD
 	
 	public List<Cliente> getResidentes() {
 		return residentes;
@@ -65,4 +74,30 @@ public class Transformador {
 		return consumoTotal;
 	}
 	
+=======
+	public Zona getZona() {
+		return zona;
+	}
+	public void setZona(Zona zona) {
+		this.zona = zona;
+	}
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+	
+	public void agregarUsuario(Cliente unCliente){
+		clientes.add(unCliente);
+	}
+	
+	public void actualizarClientes() {
+		
+	}
+	
+	public Double consumoTransformador() {
+		return null;
+	}
+>>>>>>> entrega1
 }
