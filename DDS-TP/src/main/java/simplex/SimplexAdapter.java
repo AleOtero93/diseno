@@ -10,7 +10,7 @@ import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 
 import entidades.DispositivoInteligente;
 
-public class SimplexAdapater {
+public class SimplexAdapater extends Simplex{
 	private SimplexFacade simplex;
 	
 	public SimplexAdapter(GoalType objetivo) {	
@@ -27,12 +27,17 @@ public class SimplexAdapater {
 	}
 
 	public PointValuePair resolver() throws TooManyIterationsException{
-		return this.simplex.optimize(
+		this = this.simplex;
+		solucion = this.simplex.optimize(
 			new MaxIter(100),
 			this.funcionEconomica,
 			new LinearConstraintSet(this.restricciones),
 			this.objetivo,
 			new NonNegativeConstraint(this.variablesPositivas)
 		);
+	}
+
+	public PointValuePair getSolucion() {
+		return this.solucion;
 	}
 }

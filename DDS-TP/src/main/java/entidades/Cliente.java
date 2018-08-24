@@ -158,7 +158,44 @@ public class Cliente extends Usuario {
 		
 		//Si hay algun dispositivo en esa lista, creo el simplex y obtengo la solucion
 		if(dispositivosRegulables.size() > 0) {
-			Simplex simplex = new Simplex(dispositivosRegulables);
+			//Creo las listas que se iran enviando al simplex: un array con un 1.00 por dispositivo,
+				//un array con el consumo de los dispositivos y un array que vaya cambiando todos sus valores a 0.00
+				//menos el del dispositivo evaluando (que sera maximizado en esa iteracion).
+			double[] cantDispositivos = new double[dispositivosRegulables.size()];
+			double[] consumoDispositivos = new double[dispositivosRegulables.size()];
+			double[] dispositivoFill = new double[dispositivosRegulables.size()];
+			
+			//Obtengo el consumo de los dispositivos.
+			for (int i=0;i<dispositivosRegulables.size();i++) {
+			    cantDispositivos[i] = 1;
+			    consumoDispositivos[i] = dispositivosRegulables.get(i).getConsumoPorHora();
+			}
+			
+			//ACA IRIA EL TIPO DE SIMPLEX, POR EJ.
+			/*if(tipo == 1){
+				simplex = new SimplexAdapter(GoalType.MAXIMIZE, true);
+			} else if(tipo == 2){
+				simplex = new SimplexAdapterAPI(GoalType.MAXIMIZE, true);
+			}*/
+			simplex = new SimplexAdapter(GoalType.MAXIMIZE, true);
+			simplex.funcionEconomica(cantDispositivos);
+			
+			//Restriccion de maximo consumo mensual.
+			simplex.restriccion(Relationship.LEQ, 440640, consumoDispositivos);
+			
+			//Utilizo los maximos y minimos de los dispositivos para las restricciones.
+			int usoMaximo = 0;
+			int usoMinimo = 0;
+			for (int i=0;i<dispositivosRegulables.size();i++) {
+				Arrays.fill(dispositivoFill, 0);
+				dispositivoFill[i] = 1;
+				usoMaximo = dispositivosRegulables.get(i).getUsoMaximo();
+				usoMinimo = dispositivosRegulables.get(i).getUsoMinimo();
+				simplex.restriccion(Relationship.GEQ, usoMinimo, dispositivoFill);
+				simplex.restriccion(Relationship.LEQ, usoMaximo, dispositivoFill);
+			}
+			
+			simplex.resolver();
 			solucion = simplex.getSolucion();
 		}
 		
