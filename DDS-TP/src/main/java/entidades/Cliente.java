@@ -157,7 +157,6 @@ public class Cliente extends Usuario {
 	public Integer cantidadTotalDeDispositivos() {
         return this.dispositivosInteligentes.size() + dispositivosEstandares.size();
     }
-<<<<<<< HEAD
 	
 	public PointValuePair hogarEficiente() {
 		//Creo la variable a devolver y la lista de dispositivos a enviar
@@ -192,7 +191,7 @@ public class Cliente extends Usuario {
 		todosLosDispositivos.addAll(this.dispositivosEstandares);
 
 		return todosLosDispositivos.stream().mapToDouble(disp -> disp.consumoPeriodo(desde, LocalDateTime.now())).sum();
-=======
+	}
 
 	//Calcula distancia entre dos puntos
 	public Float distancia (Float longitudA, Float longitudB, Float latitudA, Float latitudB) {
@@ -202,8 +201,7 @@ public class Cliente extends Usuario {
 	
 	//Busca transformador mas cercano
 	public void buscarTransformadorCercano(List<Transformador> transformadores) {
-		
->>>>>>> entrega1
+	
 	}
 
 }
