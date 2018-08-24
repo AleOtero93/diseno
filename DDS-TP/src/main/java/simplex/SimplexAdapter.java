@@ -26,7 +26,7 @@ public class SimplexAdapater extends Simplex{
 		this.simplex.agregarRestriccion(unComparador, valorAcomprar, consumoDispositivos);
 	}
 
-	public PointValuePair resolver() throws TooManyIterationsException{
+	public void resolver() throws TooManyIterationsException{
 		this = this.simplex;
 		solucion = this.simplex.optimize(
 			new MaxIter(100),
