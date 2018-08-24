@@ -1,10 +1,16 @@
 package entidades;
 
-public class Dispositivo {
+import org.joda.time.LocalDateTime;
+
+public abstract class Dispositivo {
 	
 	private String nombre;
-	private Float kwhora;
-	private Boolean encendido;
+	private Integer idFabrica;
+	   
+    public Dispositivo(String nombre, Integer idFab){
+        this.nombre = nombre;
+        this.idFabrica = idFab;
+    }
 	
 	public String getNombre() {
 		return nombre;
@@ -12,17 +18,14 @@ public class Dispositivo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Float getKwhora() {
-		return kwhora;
+
+	public Integer getIdFabrica() {
+		return idFabrica;
 	}
-	public void setKwhora(Float kwhora) {
-		this.kwhora = kwhora;
-	}
-	public Boolean getEncendido() {
-		return encendido;
-	}
-	public void setEncendido(Boolean encendido) {
-		this.encendido = encendido;
+	public void setIdFabrica(Integer idFabrica) {
+		this.idFabrica = idFabrica;
 	}
 	
+	public abstract Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta);
+				
 }

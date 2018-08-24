@@ -1,58 +1,89 @@
 package entidades;
 
 import java.util.List;
-import java.util.ArrayList;
 
+import accionesDispositivo.AccionesSobreDispositivos;
+
+import java.util.ArrayList;
+import entidades.DispositivoInteligente;
+import estadosDispositivos.EstadoDispositivo;
+import org.apache.commons.math3.optim.PointValuePair;
+import org.joda.time.LocalDateTime;
+
+import utilidades.Simplex;
 
 public class Cliente extends Usuario {
 
+	private String domicilio;
+	//Cambiar por Latitud y longitud en todos los tests.
+	private Float domicilioLongitud;
+	private Float domicilioLatitud;
 	private Categoria categoria;
 	private TipoDocumento tipoDocumento;
-	private List<Dispositivo> dispositivos;
+	private List<DispositivoInteligente> dispositivosInteligentes;
+	private List<DispositivoEstandar> dispositivosEstandares;
+	private Integer puntos = 0;
+	private Integer nroDocumento;
 	
-	public Cliente(String nombre, 
-			String apellido, 
-			String usuario, 
-			String password){
+	public Cliente(	String nombre, 
+					String apellido, 
+					String usuario, 
+					String password, 
+					String domicilio,
+					TipoDocumento tipoDocumento,
+					Integer nroDocumento,
+					Categoria categoria) {
 		super(nombre, apellido, usuario, password);
-	}
-
-	public Cliente(String nombre, 
-			String apellido, 
-			String usuario, 
-			String password, 
-			TipoDocumento tipoDocumento,
-			Categoria categoria) {
-		super(nombre, apellido, usuario, password);
-		// TODO Auto-generated constructor stub
-
+		
 		this.categoria = categoria;
 		this.tipoDocumento = tipoDocumento;
-		this.dispositivos = new ArrayList<Dispositivo>();
+		this.nroDocumento = nroDocumento;
+		this.domicilio = domicilio;
+		this.dispositivosInteligentes = new ArrayList<DispositivoInteligente>();
+		this.dispositivosEstandares = new ArrayList<DispositivoEstandar>();
 		
 	}
+	
+	public String getDomicilio() {
+		return domicilio;
+	}
 
-	public boolean dispEncendido(Dispositivo dispositivo) {
-		String nombre = dispositivo.getNombre();
-
-		for(Dispositivo disp : dispositivos) {
-			if(disp.getNombre().equals(nombre)) {
-				return dispositivo.getEncendido();
-				
-			}
-		}
-
-		return false;
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
 	}
 	
-	public List<Dispositivo> getDispositivos() {
-		return dispositivos;
+	public List<DispositivoInteligente> getDispositivos() {
+		return dispositivosInteligentes;
 	}
 
-	public void setDispositivos(List<Dispositivo> dispositivos) {
-		this.dispositivos = dispositivos;
+	public void setDispositivos(List<DispositivoInteligente> dispositivosInteligentes) {
+		this.dispositivosInteligentes = dispositivosInteligentes;
+		
+	}
+	
+	public List<DispositivoEstandar> getDispositivosEstandares() {
+		return dispositivosEstandares;
 	}
 
+//	public void setDispositivos(List<DispositivoEstandar> dispositivosEstandares) {
+//		this.dispositivosEstandares = dispositivosEstandares;
+//	}
+
+	public void agregarDisp(DispositivoInteligente disp){
+		dispositivosInteligentes.add(disp);
+		this.puntos += 15;
+	}
+	public void agregarDisp(DispositivoEstandar disp){
+		dispositivosEstandares.add(disp);
+	}
+	
+	public void eliminarDisp(DispositivoInteligente disp){
+		dispositivosInteligentes.remove(disp);
+	}
+	public void eliminarDisp(DispositivoEstandar disp){
+		dispositivosEstandares.remove(disp);
+	}
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -61,40 +92,88 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 	}
 
+	public Float getDomicilioLongitud() {
+		return domicilioLongitud;
+	}
+
+	public void setDomicilioLongitud(Float domicilioLongitud) {
+		this.domicilioLongitud = domicilioLongitud;
+	}
+
+	public Float getDomicilioLatitud() {
+		return domicilioLatitud;
+	}
+
+	public void setDomicilioLatitud(Float domicilioLatitud) {
+		this.domicilioLatitud = domicilioLatitud;
+	}
+
 	public TipoDocumento getTipoDocumento() {
 		return tipoDocumento;
 	}
-
+	
+	public Integer getPuntos() {
+		return puntos;
+	}
+	
 	public void setTipoDocumento(TipoDocumento tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
-	
-	public void agregarDisp(Dispositivo disp){
-		dispositivos.add(disp);
+			
+	public Integer getNroDocumento() {
+		return nroDocumento;
+	}
+
+	public void setNroDocumento(Integer nroDocumento) {
+		this.nroDocumento = nroDocumento;
 	}
 	
-	public void eliminarDisp(String nomDisp){
-		for(int i=0;i<dispositivos.size();i++) {
-			if(dispositivos.get(i).getNombre().equalsIgnoreCase(nomDisp)) {
-				dispositivos.remove(i);
-				break;
+	public Integer cantidadDeDispositivosEncendidos() {
+        Long cantidadDeEncendidos = dispositivosInteligentes.stream().filter(disp -> disp.estaEncendido()).count();
+        return cantidadDeEncendidos.intValue();
+    }
+
+	public void ejecutarAccionSobreDispositivo(AccionesSobreDispositivos accion, DispositivoInteligente dispositivo) {
+        accion.ejecutar(dispositivo);
+    }
+	
+	public Integer cantidadTotalDeDispositivos() {
+        return this.dispositivosInteligentes.size() + dispositivosEstandares.size();
+    }
+	
+	public PointValuePair hogarEficiente() {
+		//Creo la variable a devolver y la lista de dispositivos a enviar
+		PointValuePair solucion = null;
+		List<DispositivoInteligente> dispositivosRegulables = new ArrayList<DispositivoInteligente>();
+		
+		//Solo agrego a la lista los dispositivos que tienen seteado un usoMinimo y usoMaximo
+		 //(heladeras, por ej., no tendran
+		for (int i=0;i<dispositivosInteligentes.size();i++) {
+			if(dispositivosInteligentes.get(i).getUsoMinimo() > 0 &&
+					dispositivosInteligentes.get(i).getUsoMaximo() > 0 &&
+					dispositivosInteligentes.get(i).getUsoMaximo() > dispositivosInteligentes.get(i).getUsoMinimo()) {
+				dispositivosRegulables.add(dispositivosInteligentes.get(i));
 			}
 		}
-	}
-	
-	public int cantDisp(){
-		return dispositivos.size();
-	}
-	
-	public int cantDispEnEstado(Boolean estado) {
-		int cont = 0;
-		for(Dispositivo disp : dispositivos) {
-			if(disp.getEncendido() == estado) {
-				cont++;				
-			}
+		
+		//Si hay algun dispositivo en esa lista, creo el simplex y obtengo la solucion
+		if(dispositivosRegulables.size() > 0) {
+			Simplex simplex = new Simplex(dispositivosRegulables);
+			solucion = simplex.getSolucion();
 		}
-		return cont;
+		
+		//Devuelvo null si no hubo dispositivos o el resultado si los hubo
+		return solucion;
 	}
-	
-	
+
+	public double consumoEnergia() {
+		
+		LocalDateTime desde = LocalDateTime.now().minusDays(LocalDateTime.now().getDayOfMonth() - 1).withMillisOfDay(0);
+
+		List<Dispositivo> todosLosDispositivos = new ArrayList<Dispositivo>(this.dispositivosInteligentes);
+		todosLosDispositivos.addAll(this.dispositivosEstandares);
+
+		return todosLosDispositivos.stream().mapToDouble(disp -> disp.consumoPeriodo(desde, LocalDateTime.now())).sum();
+	}
+
 }
