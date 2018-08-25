@@ -5,9 +5,15 @@ import java.util.List;
 import accionesDispositivo.AccionesSobreDispositivos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import entidades.DispositivoInteligente;
 import estadosDispositivos.EstadoDispositivo;
+import simplex.SimplexAdapter;
+
 import org.apache.commons.math3.optim.PointValuePair;
+import org.apache.commons.math3.optim.linear.Relationship;
+import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 import org.joda.time.LocalDateTime;
 
 import utilidades.Simplex;
@@ -145,6 +151,7 @@ public class Cliente extends Usuario {
 		//Creo la variable a devolver y la lista de dispositivos a enviar
 		PointValuePair solucion = null;
 		List<DispositivoInteligente> dispositivosRegulables = new ArrayList<DispositivoInteligente>();
+		Simplex simplex;
 		
 		//Solo agrego a la lista los dispositivos que tienen seteado un usoMinimo y usoMaximo
 		 //(heladeras, por ej., no tendran
@@ -177,7 +184,7 @@ public class Cliente extends Usuario {
 			} else if(tipo == 2){
 				simplex = new SimplexAdapterAPI(GoalType.MAXIMIZE, true);
 			}*/
-			simplex = new SimplexAdapter(GoalType.MAXIMIZE, true);
+			simplex = new SimplexAdapter(GoalType.MAXIMIZE);
 			simplex.funcionEconomica(cantDispositivos);
 			
 			//Restriccion de maximo consumo mensual.

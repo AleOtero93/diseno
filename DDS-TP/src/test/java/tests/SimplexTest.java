@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.math3.optim.PointValuePair;
 import org.junit.Assert;
 
 public class SimplexTest {
@@ -49,7 +50,6 @@ public class SimplexTest {
 		
 	@Test
 	public void testSimplex(){
-		simplex = new SimplexAdapter();
 		PointValuePair solucion = cliente.hogarEficiente();
 
 		Assert.assertEquals(750, solucion.getValue(), 0.01);
