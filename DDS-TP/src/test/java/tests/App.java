@@ -5,10 +5,13 @@ import entidades.Categoria;
 import entidades.DispositivoEstandar;
 import entidades.TipoDocumento;
 import estadosDispositivos.Encendido;
+import simplex.SimplexAdapter;
 import entidades.DispositivoInteligente;
 import utilidades.Simplex;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.math3.optim.PointValuePair;
 
 public class App {
 
@@ -30,12 +33,12 @@ public class App {
 		cliente.agregarDisp(lavaropas);
 		cliente.agregarDisp(ventilador);
 		
-		Simplex simplex = new Simplex(cliente.getDispositivos());
+		PointValuePair solucion = cliente.hogarEficiente();
 		
-		System.out.println(simplex.getSolucion().getValue());
-		System.out.println(simplex.getSolucion().getPoint()[0]);
-		System.out.println(simplex.getSolucion().getPoint()[1]);
-		System.out.println(simplex.getSolucion().getPoint()[2]);
+		System.out.println(solucion.getValue());
+		System.out.println(solucion.getPoint()[0]);
+		System.out.println(solucion.getPoint()[1]);
+		System.out.println(solucion.getPoint()[2]);
 
 	}
 

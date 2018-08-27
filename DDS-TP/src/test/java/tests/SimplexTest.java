@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.math3.optim.PointValuePair;
 import org.junit.Assert;
 
 public class SimplexTest {
@@ -29,6 +30,7 @@ public class SimplexTest {
 	DispositivoInteligente lavaropas;
 	DispositivoInteligente ventilador;
 	DispositivoEstandar lampara;
+	static Simplex simplex;
 	
 	List<DispositivoInteligente> dispositivosCliente = new ArrayList<>();
 	
@@ -48,11 +50,12 @@ public class SimplexTest {
 		
 	@Test
 	public void testSimplex(){
-		Simplex simplex = new Simplex(cliente.getDispositivos());
-		Assert.assertEquals(750, simplex.getSolucion().getValue(), 0.01);
-		Assert.assertEquals(360, simplex.getSolucion().getPoint()[0], 0.01); // <--- X2
-		Assert.assertEquals(30, simplex.getSolucion().getPoint()[1], 0.01); // <--- X1
-		Assert.assertEquals(360, simplex.getSolucion().getPoint()[2], 0.01); // <--- X0
+		PointValuePair solucion = cliente.hogarEficiente();
+
+		Assert.assertEquals(750, solucion.getValue(), 0.01);
+		Assert.assertEquals(360, solucion.getPoint()[0], 0.01); // <--- X2
+		Assert.assertEquals(30, solucion.getPoint()[1], 0.01); // <--- X1
+		Assert.assertEquals(360, solucion.getPoint()[2], 0.01); // <--- X0
 	}
 	
 }
