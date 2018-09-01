@@ -14,5 +14,5 @@ public interface EstadoDispositivo {
     public double obtenerConsumo(DispositivoInteligente dispositivo);
 
     boolean estaEncendido();
-    Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta, DispositivoInteligente dispositivo);	
+//    Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta, DispositivoInteligente dispositivo);	
 }

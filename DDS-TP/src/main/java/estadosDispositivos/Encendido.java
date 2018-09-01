@@ -51,20 +51,20 @@ public class Encendido implements EstadoDispositivo {
 		return true;
 	}
 
-	@Override
-	public Double consumoPeriodo(LocalDateTime desde, LocalDateTime hasta, DispositivoInteligente dispositivo) {
-		
-		Interval intervaloDeConsumo = new Interval(desde.toDateTime(), hasta.toDateTime());
-        Interval intervaloDeEstado = new Interval(fechaInicio.toDateTime(), fechaFin.toDateTime());
-
-        if (intervaloDeConsumo.overlaps(intervaloDeEstado)) {
-            Interval intervaloConsumido = intervaloDeEstado.overlap(intervaloDeConsumo);
-
-            return dispositivo.getConsumoPorHora() * Hours.hoursBetween(intervaloConsumido.getStart(), intervaloConsumido.getEnd()).getHours();
-
-        } else {
-            return 0.0;
-        }
-    }
+//	@Override
+//	public Double consumoPeriodo(LocalDateTime desde, LocalDateTime hasta, DispositivoInteligente dispositivo) {
+//		
+//		Interval intervaloDeConsumo = new Interval(desde.toDateTime(), hasta.toDateTime());
+//        Interval intervaloDeEstado = new Interval(fechaInicio.toDateTime(), fechaFin.toDateTime());
+//
+//        if (intervaloDeConsumo.overlaps(intervaloDeEstado)) {
+//            Interval intervaloConsumido = intervaloDeEstado.overlap(intervaloDeConsumo);
+//
+//            return dispositivo.getConsumoPorHora() * Hours.hoursBetween(intervaloConsumido.getStart(), intervaloConsumido.getEnd()).getHours();
+//
+//        } else {
+//            return 0.0;
+//        }
+//    }
 
 }

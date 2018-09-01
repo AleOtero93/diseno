@@ -19,15 +19,10 @@ import org.joda.time.LocalDateTime;
 import utilidades.Simplex;
 
 public class Cliente extends Usuario {
-	
-	
-	private Float domicilioLongitud;
-	private Float domicilioLatitus;
-
 	private String domicilio;
 	//Cambiar por Latitud y longitud en todos los tests.
-	private Float domicilioLongitud;
-	private Float domicilioLatitud;
+	private Double domicilioLongitud;
+	private Double domicilioLatitud;
 	private Categoria categoria;
 	private TipoDocumento tipoDocumento;
 	private List<DispositivoInteligente> dispositivosInteligentes;
@@ -40,6 +35,8 @@ public class Cliente extends Usuario {
 					String usuario, 
 					String password, 
 					String domicilio,
+					Double longitud,
+					Double latitud,
 					TipoDocumento tipoDocumento,
 					Integer nroDocumento,
 					Categoria categoria) {
@@ -49,22 +46,11 @@ public class Cliente extends Usuario {
 		this.tipoDocumento = tipoDocumento;
 		this.nroDocumento = nroDocumento;
 		this.domicilio = domicilio;
+		this.domicilioLongitud = longitud;
+		this.domicilioLatitud = latitud;
 		this.dispositivosInteligentes = new ArrayList<DispositivoInteligente>();
 		this.dispositivosEstandares = new ArrayList<DispositivoEstandar>();
 		
-	}
-
-	public Float getDomicilioLongitud() {
-		return domicilioLongitud;
-	}
-	public void setDomicilioLongitud(Float domicilioLongitud) {
-		this.domicilioLongitud = domicilioLongitud;
-	}
-	public Float getDomicilioLatitus() {
-		return domicilioLatitus;
-	}
-	public void setDomicilioLatitus(Float domicilioLatitus) {
-		this.domicilioLatitus = domicilioLatitus;
 	}
 	
 	public String getDomicilio() {
@@ -91,7 +77,11 @@ public class Cliente extends Usuario {
 //	public void setDispositivos(List<DispositivoEstandar> dispositivosEstandares) {
 //		this.dispositivosEstandares = dispositivosEstandares;
 //	}
-
+	public void adaptarDispositivo(DispositivoEstandar dispEst, DispositivoInteligente dispInt) {
+		eliminarDisp(dispEst);
+		agregarDisp(dispInt);
+		this.puntos -= 5;
+	}
 	public void agregarDisp(DispositivoInteligente disp){
 		dispositivosInteligentes.add(disp);
 		this.puntos += 15;
@@ -115,19 +105,19 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 	}
 
-	public Float getDomicilioLongitud() {
+	public Double getDomicilioLongitud() {
 		return domicilioLongitud;
 	}
 
-	public void setDomicilioLongitud(Float domicilioLongitud) {
+	public void setDomicilioLongitud(Double domicilioLongitud) {
 		this.domicilioLongitud = domicilioLongitud;
 	}
 
-	public Float getDomicilioLatitud() {
+	public Double getDomicilioLatitud() {
 		return domicilioLatitud;
 	}
 
-	public void setDomicilioLatitud(Float domicilioLatitud) {
+	public void setDomicilioLatitud(Double domicilioLatitud) {
 		this.domicilioLatitud = domicilioLatitud;
 	}
 
@@ -240,12 +230,11 @@ public class Cliente extends Usuario {
 	//Calcula distancia entre dos puntos
 	public Float distancia (Float longitudA, Float longitudB, Float latitudA, Float latitudB) {
 		return (float) Math.sqrt(Math.pow(longitudB-longitudA,2)+Math.pow(latitudB-latitudA,2));
-	
 	}
 	
 	//Busca transformador mas cercano
 	public void buscarTransformadorCercano(List<Transformador> transformadores) {
-	
+		
 	}
 
 }

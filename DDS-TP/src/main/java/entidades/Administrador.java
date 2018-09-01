@@ -5,18 +5,18 @@ import org.joda.time.Months;
 
 public class Administrador extends Usuario {
 	private DateTime fechaAltaSistema;
-	private Integer Id;
+	private Integer id;
 
 	public Administrador(String nombre, 
 			String apellido, 
 			String usuario, 
 			String password,
 			DateTime fechaAltaSistema,
-			Integer Id) {
+			Integer id) {
 		super(nombre, apellido, usuario, password);
 		
 		this.fechaAltaSistema = fechaAltaSistema;
-		this.Id = Id;
+		this.id = id;
 	}
 
 	public DateTime getFechaAltaSistema() {
@@ -28,11 +28,11 @@ public class Administrador extends Usuario {
 	}
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 	
 	public long mesesEnSistema(){

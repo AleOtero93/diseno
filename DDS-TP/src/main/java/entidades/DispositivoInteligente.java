@@ -84,8 +84,8 @@ public class DispositivoInteligente extends Dispositivo{
 
 	@Override
 	public Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
-		return this.estados.stream().mapToDouble(estado -> estado.consumoPeriodo(fechaDesde, fechaHasta, this)).sum();
-
+		//return this.estados.stream().mapToDouble(estado -> estado.consumoPeriodo(fechaDesde, fechaHasta, this)).sum();
+		return 0.0;
 	}
 
 

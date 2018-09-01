@@ -1,20 +1,14 @@
 package entidades;
 
-<<<<<<< HEAD
 import java.util.List;
 
 public class Zona {
-	
-=======
-public class Zona {
->>>>>>> entrega1
 	private String nombre;
 	private Integer id;
 	private Float longitud;
 	private Float latitud;
 	private Integer radio;
 	
-<<<<<<< HEAD
 	private List<Transformador> transformadores;
 	
 	public Zona(String nombre, Integer id, List<Transformador> transformadores) {
@@ -59,44 +53,13 @@ public class Zona {
 		return radio;
 	}
 	
-=======
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public Float getLongitud() {
-		return longitud;
-	}
-	public void setLongitud(Float longitud) {
-		this.longitud = longitud;
-	}
-	public Float getLatitud() {
-		return latitud;
-	}
-	public void setLatitud(Float latitud) {
-		this.latitud = latitud;
-	}
-	public Integer getRadio() {
-		return radio;
-	}
->>>>>>> entrega1
 	public void setRadio(Integer radio) {
 		this.radio = radio;
 	}
 	
 	public Double consumoZona() {
 		return null;
-	}
-<<<<<<< HEAD
-	
+	}	
 
 	public List<Transformador> getTransformadores() {
 		return transformadores;
@@ -115,6 +78,4 @@ public class Zona {
 				.mapToDouble(transformador -> transformador.energiaConsumida()).sum();
 		return consumoTotal;
 	}
-=======
->>>>>>> entrega1
 }

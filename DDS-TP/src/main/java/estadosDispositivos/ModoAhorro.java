@@ -59,21 +59,21 @@ public class ModoAhorro implements EstadoDispositivo {
 		return true;
 	}
 
-	@Override
-	public Double consumoPeriodo(LocalDateTime desde, LocalDateTime hasta, DispositivoInteligente dispositivo) {
-	
-		Interval intervaloDeConsumo = new Interval(desde.toDateTime(), hasta.toDateTime());
-        Interval intervaloDeEstado = new Interval(fechaInicio.toDateTime(),fechaFin.toDateTime());
-
-        if (intervaloDeConsumo.overlaps(intervaloDeEstado)) {
-            Interval intervaloConsumido = intervaloDeConsumo.overlap(intervaloDeEstado);
-
-            return dispositivo.getConsumoPorHoraEnAhorro() * Hours.hoursBetween(intervaloConsumido.getStart(), intervaloConsumido.getEnd()).getHours();
-
-        } else {
-            return 0.0;
-        }
-
-    }
+//	@Override
+//	public Double consumoPeriodo(LocalDateTime desde, LocalDateTime hasta, DispositivoInteligente dispositivo) {
+//	
+//		Interval intervaloDeConsumo = new Interval(desde.toDateTime(), hasta.toDateTime());
+//        Interval intervaloDeEstado = new Interval(fechaInicio.toDateTime(),fechaFin.toDateTime());
+//
+//        if (intervaloDeConsumo.overlaps(intervaloDeEstado)) {
+//            Interval intervaloConsumido = intervaloDeConsumo.overlap(intervaloDeEstado);
+//
+//            return dispositivo.getConsumoPorHoraEnAhorro() * Hours.hoursBetween(intervaloConsumido.getStart(), intervaloConsumido.getEnd()).getHours();
+//
+//        } else {
+//            return 0.0;
+//        }
+//
+//    }
 		
 }

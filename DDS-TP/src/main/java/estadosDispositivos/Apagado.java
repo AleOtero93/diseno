@@ -44,11 +44,11 @@ public class Apagado implements EstadoDispositivo {
 		return false;
 	}
 
-	@Override
-	public Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta,
-			DispositivoInteligente dispositivo) {
-		
-		return 0.0;
-	}
+//	@Override
+//	public Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta,
+//			DispositivoInteligente dispositivo) {
+//		
+//		return 0.0;
+//	}
 
 }
