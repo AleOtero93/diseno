@@ -1,5 +1,6 @@
 package entidades;
 
+import org.joda.time.Days;
 import org.joda.time.LocalDateTime;
 
 public class DispositivoEstandar extends Dispositivo{
@@ -33,7 +34,8 @@ public class DispositivoEstandar extends Dispositivo{
 	@Override
 	public Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
 		// TODO Auto-generated method stub
-		return null;
+		int days = Days.daysBetween(fechaDesde, fechaHasta).getDays();
+		return (consumoPorHora * horasEncendidoPorDia) * days;
 	}
 	
 //	public DispositivoInteligente ConvertirInteligente() {

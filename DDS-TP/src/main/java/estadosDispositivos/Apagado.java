@@ -21,6 +21,16 @@ public class Apagado implements EstadoDispositivo {
 	public double obtenerConsumo(DispositivoInteligente dispositivo) {
 		return 0;
 	}
+	
+	@Override
+	public LocalDateTime getFechaInicio() {
+		return this.fechaInicio;
+	}
+	
+	@Override
+    public LocalDateTime getFechaFin() {
+    	return this.fechaFin;
+    }
 		
 	@Override
 	public void apagarDispositivo(DispositivoInteligente dispositivo) {

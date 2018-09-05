@@ -10,6 +10,9 @@ public interface EstadoDispositivo {
     public void ponerEnModoAhorro(DispositivoInteligente dispositivo);
     
     public void setFechaFin(LocalDateTime fecha);
+    
+    public LocalDateTime getFechaInicio();
+    public LocalDateTime getFechaFin();
 
     public double obtenerConsumo(DispositivoInteligente dispositivo);
 

@@ -1,9 +1,11 @@
 package entidades;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.joda.time.LocalDateTime;
+import org.joda.time.Period;
 
 import estadosDispositivos.EstadoDispositivo;
 
@@ -84,8 +86,27 @@ public class DispositivoInteligente extends Dispositivo{
 
 	@Override
 	public Double consumoPeriodo(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
+		Double consumo = 0.00;
+		List<EstadoDispositivo> listaEvaluados = new ArrayList<>();
+		EstadoDispositivo estado;
+		for (Iterator<EstadoDispositivo> lista = estados.iterator(); lista.hasNext();) {
+		    estado = lista.next();
+		    if(estado.getFechaFin().isBefore(fechaDesde) || estado.getFechaInicio().isAfter(fechaHasta)) {
+		    	continue;
+		    } else {
+		    	listaEvaluados.add(estado);
+		    }
+		}
+		Period p;
+		int horas;
+		for (Iterator<EstadoDispositivo> lista= listaEvaluados.iterator(); lista.hasNext();) {
+			estado = lista.next();
+			p = new Period(estado.getFechaInicio(), estado.getFechaFin());
+			horas = p.getHours();
+			consumo += (horas * estado.obtenerConsumo(this));
+		}
 		//return this.estados.stream().mapToDouble(estado -> estado.consumoPeriodo(fechaDesde, fechaHasta, this)).sum();
-		return 0.0;
+		return consumo;
 	}
 
 

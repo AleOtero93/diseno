@@ -39,6 +39,16 @@ public class Encendido implements EstadoDispositivo {
 	public void encenderDispositivo(DispositivoInteligente dispositivo) {
 		
 	}
+	
+	@Override
+	public LocalDateTime getFechaInicio() {
+		return this.fechaInicio;
+	}
+	
+	@Override
+    public LocalDateTime getFechaFin() {
+    	return this.fechaFin;
+    }
 
 	@Override
 	public void ponerEnModoAhorro(DispositivoInteligente dispositivo) {

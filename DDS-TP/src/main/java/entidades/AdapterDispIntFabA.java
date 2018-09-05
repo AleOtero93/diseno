@@ -8,8 +8,8 @@ public class AdapterDispIntFabA extends DispositivoInteligente{
 	private FabricanteA fabric;
 	
 	 
-    public AdapterDispIntFabA(String nom, Integer fab,EstadoDispositivo estado, Double consumoPorHora, Double consumoEnAhorro){ 
-    	super(nom,fab,estado,consumoPorHora,consumoEnAhorro);  
+    public AdapterDispIntFabA(String nom, Integer fab,EstadoDispositivo estado, Double consumoPorHora, Double consumoEnAhorro, Integer usoMinimo, Integer usoMaximo){ 
+    	super(nom,fab,estado,consumoPorHora,consumoEnAhorro,usoMinimo,usoMaximo);  
         this.fabric = new FabricanteA();      
     }
     
@@ -32,11 +32,5 @@ public class AdapterDispIntFabA extends DispositivoInteligente{
     @Override
     public void ponerEnModoAhorro(){
     	fabric.status = 2;
-	}
-    
-    @Override
-	public Double consumoPeriodo(DateTime fechaDesde, DateTime fechaHasta) {
-		
-		return fabric.consumoPeriodo(fechaDesde,fechaHasta);
 	}
 }

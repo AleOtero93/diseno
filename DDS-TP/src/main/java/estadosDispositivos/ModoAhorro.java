@@ -29,6 +29,16 @@ public class ModoAhorro implements EstadoDispositivo {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 	}
+	
+	@Override
+	public LocalDateTime getFechaInicio() {
+		return this.fechaInicio;
+	}
+	
+	@Override
+    public LocalDateTime getFechaFin() {
+    	return this.fechaFin;
+    }
 
 	@Override
 	public double obtenerConsumo(DispositivoInteligente dispositivo) {
