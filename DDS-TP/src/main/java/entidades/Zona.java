@@ -2,6 +2,8 @@ package entidades;
 
 import java.util.List;
 
+import org.joda.time.LocalDateTime;
+
 public class Zona {
 	private String nombre;
 	private Integer id;
@@ -73,9 +75,9 @@ public class Zona {
 		transformadores.add(transformador);
 	}
 	
-	public double consumoTotal() {
+	public double consumoTotal(LocalDateTime desde, LocalDateTime hasta) {
 		Double consumoTotal = this.transformadores.stream()
-				.mapToDouble(transformador -> transformador.energiaConsumida()).sum();
+				.mapToDouble(transformador -> transformador.energiaConsumida(desde, hasta)).sum();
 		return consumoTotal;
 	}
 }

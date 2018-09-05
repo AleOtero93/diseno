@@ -226,6 +226,13 @@ public class Cliente extends Usuario {
 
 		return todosLosDispositivos.stream().mapToDouble(disp -> disp.consumoPeriodo(desde, LocalDateTime.now())).sum();
 	}
+	
+	public double consumoEnergia(LocalDateTime desde, LocalDateTime hasta) {
+		List<Dispositivo> todosLosDispositivos = new ArrayList<Dispositivo>(this.dispositivosInteligentes);
+		todosLosDispositivos.addAll(this.dispositivosEstandares);
+
+		return todosLosDispositivos.stream().mapToDouble(disp -> disp.consumoPeriodo(desde, hasta)).sum();
+	}
 
 	//Calcula distancia entre dos puntos
 	public Float distancia (Float longitudA, Float longitudB, Float latitudA, Float latitudB) {
