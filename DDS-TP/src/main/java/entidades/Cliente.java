@@ -47,15 +47,23 @@ public class Cliente extends Usuario {
 		return dispositivosEstandares;
 	}
 
-	public void setDispositivosEstandares(List<DispositivoEstandar> dispositivosEstandares) {
+	public void setDispositivos(List<DispositivoEstandar> dispositivosEstandares) {
 		this.dispositivosEstandares = dispositivosEstandares;
 	}
-	public void agregarDisp(DispositivoInteligente disp){
+
+	public void agregarDisp(DispositivoInteligente disp,Integer puntos=15){
 		dispositivosInteligentes.add(disp);
+		this.puntos += puntos;
+	}
+	public void agregarDisp(DispositivoEstandar disp){
+		dispositivosEstandares.add(disp);
 	}
 	
 	public void eliminarDisp(DispositivoInteligente disp){
 		dispositivosInteligentes.remove(disp);
+	}
+	public void eliminarDisp(DispositivoEstandar disp){
+		dispositivosEstandares.remove(disp);
 	}
 	
 	public Categoria getCategoria() {
