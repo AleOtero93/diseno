@@ -1,0 +1,201 @@
+[
+  {
+    "transformadores": [
+      {
+        "residentes": [
+          {
+            "usuario": "Barto",
+            "tipoDocumento": "DNI",
+            "puntos": 15,
+            "password": "caramba5",
+            "nroDocumento": 33333333,
+            "nombre": "Bart",
+            "domicilioLongitud": 14.6,
+            "domicilioLatitud": 14.6,
+            "domicilio": "Siempre Viva 1",
+            "dispositivosInteligentes": null,
+            "dispositivosEstandares": [
+              {
+                "nombre": "Aire",
+                "idFabrica": 1234,
+                "horasEncendidoPorDia": 3,
+                "consumoPorHora": 3.5
+              }
+            ],
+            "categoria": {
+              "nombre": "R1",
+              "consumoMensualMinimo": 0,
+              "consumoMensualMaximo": 250,
+              "cargoVariable": 1.5,
+              "cargoFijo": 15
+            },
+            "apellido": "Simpson"
+          }
+        ],
+        "nombre": "Transformador 11",
+        "longitud": 14.6,
+        "latitud": 14.6,
+        "id": 11
+      },
+      {
+        "residentes": [
+          {
+            "usuario": "homer",
+            "tipoDocumento": "DNI",
+            "puntos": 15,
+            "password": "ouch1234",
+            "nroDocumento": 33331234,
+            "nombre": "Homero",
+            "domicilioLongitud": 14.7,
+            "domicilioLatitud": 14.7,
+            "domicilio": "Siempre Viva 2",
+            "dispositivosInteligentes": null,
+            "dispositivosEstandares": null,
+            "categoria": {
+              "nombre": "R1",
+              "consumoMensualMinimo": 0,
+              "consumoMensualMaximo": 250,
+              "cargoVariable": 1.5,
+              "cargoFijo": 15
+            },
+            "apellido": "Simpson"
+          }
+        ],
+        "nombre": "Transformador 12",
+        "longitud": 14.7,
+        "latitud": 14.7,
+        "id": 12
+      },
+      {
+        "residentes": [
+          {
+            "usuario": "LisaSimpson",
+            "tipoDocumento": "DNI",
+            "puntos": 15,
+            "password": "Saxo1234",
+            "nroDocumento": 33312334,
+            "nombre": "Lisa",
+            "domicilioLongitud": 14.8,
+            "domicilioLatitud": 14.8,
+            "domicilio": "Siempre Viva 3",
+            "dispositivosInteligentes": null,
+            "dispositivosEstandares": null,
+            "categoria": {
+              "nombre": "R1",
+              "consumoMensualMinimo": 0,
+              "consumoMensualMaximo": 250,
+              "cargoVariable": 1.5,
+              "cargoFijo": 15
+            },
+            "apellido": "Simpson"
+          }
+        ],
+        "nombre": "Transformador 13",
+        "longitud": 14.8,
+        "latitud": 14.8,
+        "id": 13
+      }
+    ],
+    "radio": 5,
+    "nombre": "Zona 1",
+    "longitud": 14.5,
+    "latitud": 14.5,
+    "id": 1111
+  },
+  {
+    "transformadores": [
+      {
+        "residentes": [
+          {
+            "usuario": "robLop",
+            "tipoDocumento": "DNI",
+            "puntos": 15,
+            "password": "rl123lop",
+            "nroDocumento": 43312334,
+            "nombre": "Roberto",
+            "domicilioLongitud": 16.6,
+            "domicilioLatitud": 16.6,
+            "domicilio": "Unique City 1",
+            "dispositivosInteligentes": null,
+            "dispositivosEstandares": null,
+            "categoria": {
+              "nombre": "R1",
+              "consumoMensualMinimo": 0,
+              "consumoMensualMaximo": 250,
+              "cargoVariable": 1.5,
+              "cargoFijo": 15
+            },
+            "apellido": "Lopez"
+          }
+        ],
+        "nombre": "Transformador 21",
+        "longitud": 16.6,
+        "latitud": 16.6,
+        "id": 21
+      },
+      {
+        "residentes": [
+          {
+            "usuario": "santiG",
+            "tipoDocumento": "DNI",
+            "puntos": 20,
+            "password": "sanG876z",
+            "nroDocumento": 43352334,
+            "nombre": "Santiago",
+            "domicilioLongitud": 16.7,
+            "domicilioLatitud": 16.7,
+            "domicilio": "Unique City 2",
+            "dispositivosInteligentes": null,
+            "dispositivosEstandares": null,
+            "categoria": {
+              "nombre": "R1",
+              "consumoMensualMinimo": 0,
+              "consumoMensualMaximo": 250,
+              "cargoVariable": 1.5,
+              "cargoFijo": 15
+            },
+            "apellido": "Gimenez"
+          }
+        ],
+        "nombre": "Transformador 22",
+        "longitud": 16.7,
+        "latitud": 16.7,
+        "id": 22
+      },
+      {
+        "residentes": [
+          {
+            "usuario": "mararosa",
+            "tipoDocumento": "DNI",
+            "puntos": 25,
+            "password": "rosarosa",
+            "nroDocumento": 44352334,
+            "nombre": "Rosa",
+            "domicilioLongitud": 16.8,
+            "domicilioLatitud": 16.8,
+            "domicilio": "Unique City 3",
+            "dispositivosInteligentes": null,
+            "dispositivosEstandares": null,
+            "categoria": {
+              "nombre": "R1",
+              "consumoMensualMinimo": 0,
+              "consumoMensualMaximo": 250,
+              "cargoVariable": 1.5,
+              "cargoFijo": 15
+            },
+            "apellido": "Maravillosa"
+          }
+        ],
+        "nombre": "Transformador 23",
+        "longitud": 16.8,
+        "latitud": 16.8,
+        "id": 23
+      }
+    ],
+    "radio": 5,
+    "nombre": "Zona 2",
+    "longitud": 16.5,
+    "latitud": 16.5,
+    "id": 2222
+  }
+]
