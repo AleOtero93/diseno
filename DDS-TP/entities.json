@@ -6,6 +6,8 @@
 	    "password":"admin123",
 	    "nroDocumento": 12345,
         "tipoDocumento": "DNI",
+        "domicilioLongitud": 12.6,
+        "domicilioLatitud": 11.8,
 	    "dispositivos": [{
 			"nombre":"Heladera",
 		    "kwhora":80.0,

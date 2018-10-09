@@ -235,13 +235,25 @@ public class Cliente extends Usuario {
 	}
 
 	//Calcula distancia entre dos puntos
-	public Float distancia (Float longitudA, Float longitudB, Float latitudA, Float latitudB) {
+	public Float distancia (Double longitudA, Float longitudB, Double latitudA, Float latitudB) {
 		return (float) Math.sqrt(Math.pow(longitudB-longitudA,2)+Math.pow(latitudB-latitudA,2));
 	}
 	
 	//Busca transformador mas cercano
 	public void buscarTransformadorCercano(List<Transformador> transformadores) {
-		
+		Transformador t;
+		Transformador tSeleccionado = new Transformador("", 0, null);
+		Float minima = (float) -1;
+        Float distancia;
+    	for(int j=0;j<transformadores.size();j++) {
+    		t = transformadores.get(j);
+    		distancia = this.distancia(this.getDomicilioLongitud(), t.getLongitud(), this.getDomicilioLatitud(), t.getLatitud());
+    		if(minima == -1 || distancia < minima) {
+    			minima = distancia;
+    			tSeleccionado = t;
+    		}
+    	}
+    	tSeleccionado.agregarResidente(this);
 	}
 
 }

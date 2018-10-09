@@ -3,18 +3,21 @@
     "transformadores": [
       {
         "nombre": "Transformador 11",
+        "residentes": [],
         "longitud": 14.6,
         "latitud": 14.6,
         "id": 11
       },
       {
         "nombre": "Transformador 12",
+        "residentes": [],
         "longitud": 14.7,
         "latitud": 14.7,
         "id": 12
       },
       {
         "nombre": "Transformador 13",
+        "residentes": [],
         "longitud": 14.8,
         "latitud": 14.8,
         "id": 13
@@ -30,18 +33,21 @@
     "transformadores": [
       {
         "nombre": "Transformador 21",
+        "residentes": [],
         "longitud": 16.6,
         "latitud": 16.6,
         "id": 21
       },
       {
         "nombre": "Transformador 22",
+        "residentes": [],
         "longitud": 16.7,
         "latitud": 16.7,
         "id": 22
       },
       {
         "nombre": "Transformador 23",
+        "residentes": [],
         "longitud": 16.8,
         "latitud": 16.8,
         "id": 23

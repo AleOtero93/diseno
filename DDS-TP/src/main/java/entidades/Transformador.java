@@ -1,5 +1,6 @@
 package entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.LocalDateTime;
@@ -9,7 +10,7 @@ public class Transformador {
 	private Integer id;
 	private Float longitud;
 	private Float latitud;
-	private List<Cliente> residentes;
+	private List<Cliente> residentes = new ArrayList<Cliente>();
 	
 	public Transformador(String nombre, Integer id, List<Cliente> residentes) {
 		this.nombre=nombre;
