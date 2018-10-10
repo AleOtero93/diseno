@@ -7,10 +7,20 @@
   
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <!--	
-    	<class></class>
-    	    	<class></class>
-    	-->
+    	
+	<!--A continuacion se listan las clases que seran persistidas-->
+    	<class>entidades.Usuario</class>	
+    	<class>entidades.Cliente</class>
+    	<class>entidades.Administrador</class>    	
+    	<class>entidades.Actuador</class>
+    	<class>entidades.Dispositivo</class>
+    	<class>entidades.DispositivoEstandar</class>
+    	<class>entidades.DispositivoInteligente</class>
+    	<class>entidades.Sensor</class>
+    	<class>entidades.Transformador</class>
+    	<class>entidades.Zona</class>
+    	<class>entidades.Administrador</class>
+    	<class>entidades.Dispositivo</class>
     	 
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        
