@@ -27,6 +27,9 @@ DEFAULT CHARACTER SET = utf8;
 
 -- Tipos de documentos aceptados segun enunciado entrega0
 INSERT INTO `dds`.`TipoDocu` (`descripion`) 
+VALUES ('Sin documento');
+
+INSERT INTO `dds`.`TipoDocu` (`descripion`) 
 VALUES ('DNI (Documento Nacional de Identidad)');
 
 INSERT INTO `dds`.`TipoDocu` (`descripion`) 
@@ -53,6 +56,9 @@ CREATE TABLE IF NOT EXISTS `dds`.`Categorias` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `dds`.`Categorias` (`descripion`, `cargoFijo`, `cargoVariable`) 
+VALUES ('Sin categoria',0.00,0.000);
 
 INSERT INTO `dds`.`Categorias` (`descripion`, `cargoFijo`, `cargoVariable`) 
 VALUES ('R1',18.76,0.644);
@@ -85,6 +91,9 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
+INSERT INTO `dds`.`Zonas` (`nombre`, `radio`, `centroLongitud`,`centroLatitud`) 
+VALUES ('Sin zona',0,0.0000000,0.0000000);
+
 
 -- -----------------------------------------------------
 -- Table `dds`.`Transformadores`
@@ -107,26 +116,30 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
+INSERT INTO `dds`.`Transformadores` (`nombre`, `longitud`, `latitud`,`id_zona`) 
+VALUES ('Sin Transformador',0.0000000,0.0000000,1);
+
 -- -----------------------------------------------------
 -- Table `dds`.`Usuarios`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `dds`.`Usuarios` ;
 CREATE TABLE IF NOT EXISTS `dds`.`Usuarios` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `id_tipoDoc` INT(11) NOT NULL,
-  `nroDoc` INT(11) NOT NULL,
-  `fechaAlta` DATE NOT NULL,
+  `id_tipoDoc` INT(11) default 1,
+  `nroDoc` INT(11) default NULL,
   `nombre` VARCHAR(30) NOT NULL,
   `apellido` VARCHAR(30) NOT NULL,
-  `domicilioServicio` VARCHAR(50) NOT NULL,
-  `domicilioLongitud` FLOAT(11,7) NOT NULL,
-  `domicilioLatitud` FLOAT(11,7) NOT NULL,
+  `domicilioServicio` VARCHAR(50) default NULL,
+  `domicilioLongitud` FLOAT(11,7) default NULL,
+  `domicilioLatitud` FLOAT(11,7) default NULL,
   `usuario` VARCHAR(30) NOT NULL,
   `password` VARCHAR(30) NOT NULL,
   `flagAdmin` BOOLEAN NOT NULL,
-  `fechaAltaAdmin` DATE NOT NULL,
-  `id_categoria` INT(11) NOT NULL,
-  `id_transformador` INT(11) NOT NULL,
+  `fechaAltaAdmin` DATE default NULL,
+  `id_categoria` INT(11) default 1,
+  `puntos` INT(11) default NULL,
+  `id_transformador` INT(11) default 1,
+  `<b>dtype</b>` varchar(31) default NULL,
   PRIMARY KEY (`id`, `id_tipoDoc`, `id_categoria`, `id_transformador`),
   INDEX `fk_id_categoria_idx` (`id_categoria` ASC),
   INDEX `fk_id_tipo_documento_idx` (`id_tipoDoc` ASC),
@@ -197,8 +210,8 @@ VALUES ('Ventilador',120,360);
 DROP TABLE IF EXISTS `dds`.`dispositivos` ;
 CREATE TABLE IF NOT EXISTS `dds`.`dispositivos` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `idFabrica` VARCHAR(45) NULL DEFAULT NULL,
+  `nombre` VARCHAR(45) DEFAULT NULL,
+  `idFabrica` VARCHAR(45) DEFAULT NULL,
   `consumoPorHora` DOUBLE NOT NULL,
   `consumoPorHoraAhorro` DOUBLE NOT NULL,
   `id_usuario` INT(11) NOT NULL,
@@ -321,6 +334,15 @@ CREATE TABLE IF NOT EXISTS `dds`.`estado` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `dds`.`estado` (`descripcion`) 
+VALUES ('Encendido');
+
+INSERT INTO `dds`.`estado` (`descripcion`) 
+VALUES ('Apagado');
+
+INSERT INTO `dds`.`estado` (`descripcion`) 
+VALUES ('Modo Ahorro');
 
 -- -----------------------------------------------------
 -- Table `dds`.`estados_dispositivos`
