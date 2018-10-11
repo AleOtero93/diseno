@@ -1,8 +1,10 @@
 package entidades;
 
+import javax.persistence.Entity;
+
 import org.joda.time.Days;
 import org.joda.time.LocalDateTime;
-
+@Entity
 public class DispositivoEstandar extends Dispositivo{
 	
 	private Double consumoPorHora;

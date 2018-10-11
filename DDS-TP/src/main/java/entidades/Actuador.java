@@ -3,14 +3,34 @@ package entidades;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import accionesDispositivo.AccionesSobreDispositivos;
 
+@Entity
+@Table(name = "actuadores")
+
 public class Actuador {
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 private int id;
+	 
+	 @ManyToOne(fetch = FetchType.EAGER)
+	    @JoinColumn(name = "id_regla",unique = true) 
 	private Integer regla;
+	 
+	 @Column(name = "operacion",nullable = false) 
 	private String operacion;
 	private AccionesSobreDispositivos operacionEnDispositivo;
 	private List<DispositivoInteligente> dispositivos;

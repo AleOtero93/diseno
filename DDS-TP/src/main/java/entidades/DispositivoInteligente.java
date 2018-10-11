@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.Entity;
+
 import org.joda.time.LocalDateTime;
 import org.joda.time.Period;
 
 import estadosDispositivos.EstadoDispositivo;
 
+@Entity
 public class DispositivoInteligente extends Dispositivo{
 
 	private Integer usoMinimo;
