@@ -1,11 +1,38 @@
 package entidades;
 
-public class Usuario {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Usuarios")
+public class Usuario implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@Column(name="nombre")
 	private String nombre;
+	
+	@Column(name="apellido")
 	private String apellido;
+	
+	@Column(name="usuario")
 	private String usuario;
+	
+	@Column(name="password")
 	private String password;
+	
+	public Usuario () {
+		
+	}
 	
 	public Usuario(String nombre, String apellido, String usuario, String password) {
 		this.nombre = nombre;

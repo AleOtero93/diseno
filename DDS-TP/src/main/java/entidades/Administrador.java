@@ -1,10 +1,19 @@
 package entidades;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 import org.joda.time.DateTime;
 import org.joda.time.Months;
 
+@Entity
 public class Administrador extends Usuario {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Column (name="fechaAltaAdmin")
 	private DateTime fechaAltaSistema;
+	
 	private Integer id;
 
 	public Administrador(String nombre, 

@@ -2,6 +2,10 @@ package entidades;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 import accionesDispositivo.AccionesSobreDispositivos;
 
 import java.util.ArrayList;
@@ -18,18 +22,49 @@ import org.joda.time.LocalDateTime;
 
 import utilidades.Simplex;
 
+@Entity
 public class Cliente extends Usuario {
+	
+	private static final long serialVersionUID = 1L;
+
+	@Column(name="domicilioServicio")
 	private String domicilio;
-	//Cambiar por Latitud y longitud en todos los tests.
+	
+	@Column(name="domicilioLongitud")	
 	private Double domicilioLongitud;
+	
+	@Column(name="domicilioLatitud")	
 	private Double domicilioLatitud;
+	
+	@Column(name="id_categoria")
+	@ManyToOne //Un cliente pertence a una categoría y en una categoría pueden pertenecer varios clientes 
 	private Categoria categoria;
+	
+	@Column(name="id_tipoDoc")
+	@ManyToOne //Un cliente posee un tipo de documento y un mismo tipo de documento lo poseen varios clientes 
 	private TipoDocumento tipoDocumento;
+	
 	private List<DispositivoInteligente> dispositivosInteligentes;
 	private List<DispositivoEstandar> dispositivosEstandares;
+	
+	@Column(name="puntos")	
 	private Integer puntos = 0;
+	
+	@Column(name="nroDoc")	
 	private Integer nroDocumento;
 	
+	@Column(name="id_transformador")
+	@ManyToOne //Un cliente se conecta a un transformador y a un transformador se conectan varios clientes 	
+	private Transformador idTransformador;	
+	
+	public Transformador getIdTransformador() {
+		return idTransformador;
+	}
+
+	public void setIdTransformador(Transformador idTransformador) {
+		this.idTransformador = idTransformador;
+	}
+
 	public Cliente(	String nombre, 
 					String apellido, 
 					String usuario, 
