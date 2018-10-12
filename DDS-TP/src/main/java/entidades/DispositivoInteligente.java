@@ -14,10 +14,23 @@ import estadosDispositivos.EstadoDispositivo;
 @Entity
 public class DispositivoInteligente extends Dispositivo{
 
+	@Column(name = "usoMinimo")
 	private Integer usoMinimo;
+
+	@Column(name = "usoMaximo")
 	private Integer usoMaximo;
+
+	@Column(name = "consumoPorHora")
 	private Double consumoPorHora;
+
+	@Column(name = "consumoPorHoraEnAhorro")
 	private Double consumoPorHoraEnAhorro;
+
+	@ManyToMany(
+		name = "estadosDispositivos", 
+        joinColumns = { @JoinColumn(name = "dispositivo_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "estadoDispositivo_id")
+		)
 	private List<EstadoDispositivo> estados = new ArrayList<>();
 	
 	public DispositivoInteligente(String nombre, Integer idFab, EstadoDispositivo estado, Double consumoPorHora, Double consumoEnAhorro, Integer usoMinimo, Integer usoMaximo) {

@@ -7,7 +7,10 @@ import org.joda.time.LocalDateTime;
 @Entity
 public class DispositivoEstandar extends Dispositivo{
 	
+	@Column(name = "consumoPorHora")
 	private Double consumoPorHora;
+
+	@Column(name = "horasEncendidoPorDia")
 	private Integer horasEncendidoPorDia;
 	
 	public DispositivoEstandar(String nombre, Integer idFab, Double consumoPorHora, Integer horasEncendidoPorDia) {
