@@ -3,9 +3,25 @@ package entidades;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "sensores")
 public class Sensor {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	
+	@Column(name = "medicion")
 	private Integer medicion;
+	
+	@OneToMany(
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
+	@JoinColumn(name = "sensor_id")
 	private List<Actuador> actuadores;
+	
+	//Constructor vacío para que funcione
+	public Sensor(){
+	}
 	
 	public Sensor(Integer medicion){
 		this.medicion = medicion;
