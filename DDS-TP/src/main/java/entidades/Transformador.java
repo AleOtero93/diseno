@@ -3,21 +3,48 @@ package entidades;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import org.joda.time.LocalDateTime;
 
+@Entity
+@Table (name = "Transformadores")
 public class Transformador {
-	private String nombre;
+	
+	@Id
 	private Integer id;
+	
+	@Column(name = "NOMBRE")
+	private String nombre;
+	
+	@Column(name = "LONGITUD")
 	private Float longitud;
+	
+	@Column(name = "LATITUD")
 	private Float latitud;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_ZONA")
+	private Zona zona;
+	
+@OneToMany
 	private List<Cliente> residentes = new ArrayList<Cliente>();
+
+public Transformador() {}
 	
 	public Transformador(String nombre, Integer id, List<Cliente> residentes) {
 		this.nombre=nombre;
 		this.id=id;
 		this.residentes=residentes;
 		}
-	private Zona zona;
+	
 	private List<Cliente> clientes;
 	
 	public String getNombre() {
