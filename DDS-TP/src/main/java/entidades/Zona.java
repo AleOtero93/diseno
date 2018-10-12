@@ -2,16 +2,40 @@ package entidades;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import org.joda.time.LocalDateTime;
 
+@Entity
+@Table(name = "ZONAS")
 public class Zona {
-	private String nombre;
+	
+	@Id
+	@GeneratedValue
 	private Integer id;
+	
+	@Column(name = "NOMBRE" )
+	private String nombre;
+	
+	@Column(name = "LONGITUD")
 	private Float longitud;
+	
+	@Column(name = "LATITUD")
 	private Float latitud;
+
+	@Column(name = "RADIO")
 	private Integer radio;
 	
+	@OneToMany(mappedBy = "zona", cascade= CascadeType.ALL)
 	private List<Transformador> transformadores;
+	
+	public Zona() {}
 	
 	public Zona(String nombre, Integer id, List<Transformador> transformadores) {
 		this.nombre = nombre;
