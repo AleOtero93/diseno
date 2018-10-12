@@ -42,7 +42,9 @@ public class Actuador {
 		this.dispositivos = new ArrayList<DispositivoInteligente>();
 		
 	}
-	
+			
+	public Actuador() {}
+
 	public void agregarDisp(DispositivoInteligente disp){
 		dispositivos.add(disp);
 	}

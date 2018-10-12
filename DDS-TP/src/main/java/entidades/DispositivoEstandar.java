@@ -15,6 +15,8 @@ public class DispositivoEstandar extends Dispositivo{
 		this.consumoPorHora = consumoPorHora;
 		this.horasEncendidoPorDia = horasEncendidoPorDia;
 	}
+	
+	public DispositivoEstandar() {}
 
 	public Double getConsumoPorHora() {
 		return consumoPorHora;

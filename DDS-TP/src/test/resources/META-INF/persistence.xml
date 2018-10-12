@@ -9,19 +9,17 @@
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
     	
 	<!--A continuacion se listan las clases que seran persistidas-->
-    	<class>entidades.Usuario</class>	
-    	<class>entidades.Cliente</class>
-    	<class>entidades.Administrador</class>    	
-    	<class>entidades.Actuador</class>
-    	<class>entidades.Dispositivo</class>
-    	<class>entidades.DispositivoEstandar</class>
-    	<class>entidades.DispositivoInteligente</class>
-    	<class>entidades.Sensor</class>
-    	<class>entidades.Transformador</class>
-    	<class>entidades.Zona</class>
-    	<class>entidades.Administrador</class>
-    	<class>entidades.Dispositivo</class>
-    	 
+    	<class>ddsTP.entidades.Usuario</class>	
+    	<class>ddsTP.entidades.Cliente</class>
+    	<class>ddsTP.entidades.Administrador</class>    	
+    	<class>ddsTP.entidades.Actuador</class>
+    	<class>ddsTP.entidades.Dispositivo</class>
+    	<class>ddsTP.entidades.DispositivoEstandar</class>
+    	<class>ddsTP.entidades.DispositivoInteligente</class>
+    	<class>ddsTP.entidades.Sensor</class>
+    	<class>ddsTP.entidades.Transformador</class>
+    	<class>ddsTP.entidades.Zona</class>
+    	    	 
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        
         

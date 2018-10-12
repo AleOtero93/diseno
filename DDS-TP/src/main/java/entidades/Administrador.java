@@ -27,6 +27,8 @@ public class Administrador extends Usuario {
 		this.fechaAltaSistema = fechaAltaSistema;
 		this.id = id;
 	}
+	
+	public Administrador() {}
 
 	public DateTime getFechaAltaSistema() {
 		return fechaAltaSistema;

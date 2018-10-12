@@ -29,6 +29,8 @@ public class DispositivoInteligente extends Dispositivo{
 		this.usoMaximo = usoMaximo;
 	}
 	
+	public DispositivoInteligente() {}
+
 	public boolean estaEncendido(){
 		return this.ultimoEstado().estaEncendido();
 	}

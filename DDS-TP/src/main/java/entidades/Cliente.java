@@ -37,7 +37,7 @@ public class Cliente extends Usuario {
 	private Double domicilioLatitud;
 	
 	@Column(name="id_categoria")
-	@ManyToOne //Un cliente pertence a una categoría y en una categoría pueden pertenecer varios clientes 
+	@ManyToOne //Un cliente pertence a una categorï¿½a y en una categorï¿½a pueden pertenecer varios clientes 
 	private Categoria categoria;
 	
 	@Column(name="id_tipoDoc")
@@ -87,7 +87,9 @@ public class Cliente extends Usuario {
 		this.dispositivosEstandares = new ArrayList<DispositivoEstandar>();
 		
 	}
-	
+			
+	public Cliente(){}
+
 	public String getDomicilio() {
 		return domicilio;
 	}

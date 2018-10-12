@@ -24,7 +24,10 @@ public abstract class Dispositivo {
         this.nombre = nombre;
         this.idFabrica = idFab;
     }
-	
+    
+    	
+	public Dispositivo() {}
+
 	public String getNombre() {
 		return nombre;
 	}
