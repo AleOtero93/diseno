@@ -3,20 +3,25 @@ package entidades;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+//import javax.persistence.Inheritance;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Usuarios")
+@DiscriminatorColumn(name="tipoClase")	
 public class Usuario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO )
+	@Column(name = "id", unique = true , nullable = false )
+	private Long id; 
 	
 	@Column(name="nombre")
 	private String nombre;

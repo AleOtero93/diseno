@@ -1,6 +1,7 @@
 package entidades;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,16 +9,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.joda.time.LocalDateTime;
+
 @Entity
 @Table(name = "dispositivos")
+@DiscriminatorColumn(name="tipoClase")
 public abstract class Dispositivo {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id",unique = true,nullable = false)
-    private int id;
-	 @Column(name = "nombre",nullable = false)
+	private int id;
+		
+	@Column(name = "nombre",nullable = false)
 	private String nombre;
-	 @Column(name = "idFabrica",nullable = false)
+	 
+	@Column(name = "idFabrica",nullable = false)
 	private Integer idFabrica;
 	   
     public Dispositivo(String nombre, Integer idFab){
@@ -26,7 +32,9 @@ public abstract class Dispositivo {
     }
     
     	
-	public Dispositivo() {}
+	public Dispositivo() {
+		
+	}
 
 	public String getNombre() {
 		return nombre;

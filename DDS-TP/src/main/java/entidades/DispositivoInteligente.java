@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 import org.joda.time.LocalDateTime;
 import org.joda.time.Period;
@@ -12,6 +16,7 @@ import org.joda.time.Period;
 import estadosDispositivos.EstadoDispositivo;
 
 @Entity
+@DiscriminatorValue(value="DispoInteligente" )
 public class DispositivoInteligente extends Dispositivo{
 
 	@Column(name = "usoMinimo")
@@ -26,11 +31,10 @@ public class DispositivoInteligente extends Dispositivo{
 	@Column(name = "consumoPorHoraEnAhorro")
 	private Double consumoPorHoraEnAhorro;
 
-	@ManyToMany(
-		name = "estadosDispositivos", 
-        joinColumns = { @JoinColumn(name = "dispositivo_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "estadoDispositivo_id")
-		)
+//	@ManyToMany(cascade = "estadosDispositivos") 
+//        @JoinColumn(name = "dispositivo_id") 
+//        @JoinColumn(name = "estadoDispositivo_id")
+//		
 	private List<EstadoDispositivo> estados = new ArrayList<>();
 	
 	public DispositivoInteligente(String nombre, Integer idFab, EstadoDispositivo estado, Double consumoPorHora, Double consumoEnAhorro, Integer usoMinimo, Integer usoMaximo) {
@@ -42,7 +46,9 @@ public class DispositivoInteligente extends Dispositivo{
 		this.usoMaximo = usoMaximo;
 	}
 	
-	public DispositivoInteligente() {}
+	public DispositivoInteligente() {
+		
+	}
 
 	public boolean estaEncendido(){
 		return this.ultimoEstado().estaEncendido();

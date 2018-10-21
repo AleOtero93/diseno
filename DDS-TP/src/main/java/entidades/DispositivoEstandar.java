@@ -1,10 +1,14 @@
 package entidades;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDateTime;
+
 @Entity
+@DiscriminatorValue(value="DispoEstandar" )
 public class DispositivoEstandar extends Dispositivo{
 	
 	@Column(name = "consumoPorHora")
@@ -19,7 +23,9 @@ public class DispositivoEstandar extends Dispositivo{
 		this.horasEncendidoPorDia = horasEncendidoPorDia;
 	}
 	
-	public DispositivoEstandar() {}
+	public DispositivoEstandar() {
+		
+	}
 
 	public Double getConsumoPorHora() {
 		return consumoPorHora;

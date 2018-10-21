@@ -13,23 +13,23 @@ import javax.persistence.Table;
 import org.joda.time.LocalDateTime;
 
 @Entity
-@Table(name = "ZONAS")
+@Table(name = "Zonas")
 public class Zona {
 	
 	@Id
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name = "NOMBRE" )
+	@Column(name = "nombre" )
 	private String nombre;
 	
-	@Column(name = "LONGITUD")
+	@Column(name = "centroLongitud")
 	private Float longitud;
 	
-	@Column(name = "LATITUD")
+	@Column(name = "centroLatitud")
 	private Float latitud;
 
-	@Column(name = "RADIO")
+	@Column(name = "radio")
 	private Integer radio;
 	
 	@OneToMany(mappedBy = "zona", cascade= CascadeType.ALL)

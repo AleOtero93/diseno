@@ -1,12 +1,14 @@
 package entidades;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import org.joda.time.DateTime;
 import org.joda.time.Months;
 
 @Entity
+@DiscriminatorValue(value="Administrador" )
 public class Administrador extends Usuario {
 
 	private static final long serialVersionUID = 1L;
@@ -27,8 +29,6 @@ public class Administrador extends Usuario {
 		this.fechaAltaSistema = fechaAltaSistema;
 		this.id = id;
 	}
-	
-	public Administrador() {}
 
 	public DateTime getFechaAltaSistema() {
 		return fechaAltaSistema;

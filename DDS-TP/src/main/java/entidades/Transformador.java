@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,22 +21,24 @@ import org.joda.time.LocalDateTime;
 public class Transformador {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO )
+	@Column(name = "id", unique = true , nullable = false )
 	private Integer id;
 	
-	@Column(name = "NOMBRE")
+	@Column(name = "nombre")
 	private String nombre;
 	
-	@Column(name = "LONGITUD")
+	@Column(name = "longitud")
 	private Float longitud;
 	
-	@Column(name = "LATITUD")
+	@Column(name = "latitud")
 	private Float latitud;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_ZONA")
+	@JoinColumn(name = "id_zona")
 	private Zona zona;
 	
-@OneToMany
+	@OneToMany (mappedBy = "transformador")
 	private List<Cliente> residentes = new ArrayList<Cliente>();
 
 public Transformador() {}

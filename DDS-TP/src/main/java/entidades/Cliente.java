@@ -3,8 +3,10 @@ package entidades;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import accionesDispositivo.AccionesSobreDispositivos;
 
@@ -23,6 +25,7 @@ import org.joda.time.LocalDateTime;
 import utilidades.Simplex;
 
 @Entity
+@DiscriminatorValue(value="Cliente" )
 public class Cliente extends Usuario {
 	
 	private static final long serialVersionUID = 1L;
@@ -37,14 +40,17 @@ public class Cliente extends Usuario {
 	private Double domicilioLatitud;
 	
 	@Column(name="id_categoria")
-	@ManyToOne //Un cliente pertence a una categor�a y en una categor�a pueden pertenecer varios clientes 
+	@ManyToOne //Un cliente pertence a una categoria y en una categoria pueden pertenecer varios clientes 
 	private Categoria categoria;
 	
-	@Column(name="id_tipoDoc")
+	@Column(name="id_tipoDocu")
 	@ManyToOne //Un cliente posee un tipo de documento y un mismo tipo de documento lo poseen varios clientes 
 	private TipoDocumento tipoDocumento;
 	
+	@OneToMany (mappedBy = "cliente")
 	private List<DispositivoInteligente> dispositivosInteligentes;
+	
+	@OneToMany (mappedBy = "cliente")
 	private List<DispositivoEstandar> dispositivosEstandares;
 	
 	@Column(name="puntos")	
@@ -88,7 +94,9 @@ public class Cliente extends Usuario {
 		
 	}
 			
-	public Cliente(){}
+	public Cliente(){
+		
+	}
 
 	public String getDomicilio() {
 		return domicilio;

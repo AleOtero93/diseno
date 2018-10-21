@@ -1,12 +1,31 @@
 package entidades;
 
-public class Categoria {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Categoria {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO )
+	@Column(name = "id", unique = true , nullable = false )
+	private Long id; 
+	
+	@Column(name = "descripcion")
 	private String nombre;
+	
 	private Integer consumoMensualMinimo;
 	private Integer consumoMensualMaximo;
+	
+	@Column(name = "cargoFijo")
 	private Float cargoFijo;
+	
+	@Column(name = "cargoVariable")
 	private Float cargoVariable;
+	
 	
 	public Categoria(String nom, int min, int max, Float cFij, Float cVar) {
 		this.nombre = nom;
