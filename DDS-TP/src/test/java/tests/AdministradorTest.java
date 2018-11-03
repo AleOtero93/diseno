@@ -20,6 +20,6 @@ public class AdministradorTest {
 	
 	@Test
 	public void testMesesEnSistema() {
-		Assert.assertEquals(7,admin.mesesEnSistema());
+		Assert.assertEquals(10,admin.mesesEnSistema());
 	}
 }
